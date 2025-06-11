@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="imagens/logo.png" type="image/png">
+    <!--Fonte usada no site-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <title>KLM</title>
+
+</head>
+
+<body id="body">
+
+    <nav class="navbar container-nav">
+        <div id="navbar">
+            <div id="barra1">
+                <!-- Menu hamburguer -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false">
+                    <div class="hamburger" onclick="toggleMenu()">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="imagens/KLM_logo.png" alt="Logo">
+                </a>
+                </button>
+                <a class="navbar-brand texto" href="#">
+                    Royal Dutch Airlines
+                </a>
+                <!-- Logo -->
+
+                <!-- Ícones do menu -->
+                <ul class="navbar-nav search" style="list-style-image: url('imagens/profile-user.png');">
+                    <li class="nav btnLogin loginLi login" id="loginBtn">
+                        <img class="icon-img-nav" src="imagens/profile-user.png" alt="">
+                        <a class="nav-link " href="#"><span id="searchTexto">efetuar Login</span></a>
+                    </li>
+                   <!--Button linguas-->
+                    <li class="nav linguas" id="btnLinguas">
+                        <img class="icon-img-nav" src="imagens/bandeira.png" alt="">
+                        <a class="nav-link linguas" id="linguaMenu">Portugues-PT</a>
+                    </li>
+                    <li class="nav pesquisa openSearch">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" id="pesquisaIconOpen"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M 13.261719 14.867188 L 15.742188 17.347656 C 15.363281 18.070313 15.324219 18.789063 15.722656 19.1875 L 20.25 23.714844 C 20.820313 24.285156 22.0625 23.972656 23.015625 23.015625 C 23.972656 22.058594 24.285156 20.820313 23.714844 20.25 L 19.191406 15.722656 C 18.789063 15.324219 18.070313 15.363281 17.347656 15.738281 L 14.867188 13.261719 Z M 8.5 0 C 3.804688 0 0 3.804688 0 8.5 C 0 13.195313 3.804688 17 8.5 17 C 13.195313 17 17 13.195313 17 8.5 C 17 3.804688 13.195313 0 8.5 0 Z M 8.5 15 C 4.910156 15 2 12.089844 2 8.5 C 2 4.910156 4.910156 2 8.5 2 C 12.089844 2 15 4.910156 15 8.5 C 15 12.089844 12.089844 15 8.5 15 Z">
+                            </path>
+                        </svg>
+                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" id="pesquisaIconClose"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18 17.94 6M18 18 6.06 6" />
+                        </svg>
+                    </li>
+
+                </ul>
+<!--Secção de subMenus -->
+            </div>
+            <div id="containerPesquisa">
+                <form action="" id="pesquisaForm">
+                    <div class="input-container">
+                        <div class="icon-box"></div>
+                        <input id="searchBar" type="text" placeholder="Pesquisa KLM" />
+                    </div>
+                </form>
+            </div>
+            <!--Secção do subMenu de baixas resoluções-->
+            <div id="sandwichMenu" >
+                <form action="" id="pesquisaForm">
+                    <div class="input-container">
+
+                        <ul class="navbar-navLateral ">
+
+                            <li class="nav-item ">
+                                <a id="sandwichMenu-home" class="nav-link " href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="sandwichMenu-viagem" class="nav-link" href="https://www.klm.pt/trip">A minha viagem</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="sandwichMenu-check-In" class="nav-link" href="https://www.klm.pt/check-in">Check-in</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="sandwichMenu-Informacao" class="nav-link" href="https://www.klm.pt/information">Informações</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </form>
+            </div>
+            <!--Secção do subMenu de login-->
+            <div id="subMenuLogin" class="subMenuLogin" >
+                <form action="" id="pesquisaForm" >
+                    <div class="input-container" >
+
+                        <ul class="navbar-navLateral ">
+                            <li class="nav-item ">
+                                <a id="subMenuLogin-login" class="nav-link " href="#">Efetuar Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="subMenuLogin-inscricao" class="nav-link" href="#">Inscrever-se</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </form>
+            </div>
+             <!--Secção do subMenu de Linguas-->
+             <div id="subMenuLinguas" class="subMenuLinguas "  >
+                <form action="" id="pesquisaForm" >
+                    <div class="input-container" >
+
+                        <ul class="navbar-navLateral">
+                            <li class="nav-item">
+                                <a class="nav-link lingua-link" ><input hidden class="InputLingua" value="Portugal-PT" type="text">Português</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link lingua-link" ><input hidden class="InputLingua" value="Portugal-EN" type="text">Inglês</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link lingua-link" ><input hidden class="InputLingua" value="Espanhol" type="text">Espanhol</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link lingua-link" ><input hidden class="InputLingua" value="Francês" type="text">Francês</a>
+                            </li>
+                        </ul>
+                        
+                        
+                    </div>
+                </form>
+            </div>
+
+
+
+
+            <div id="barra2">
+
+                <ul class="navbar-nav">
+
+                    <li class="nav-item ">
+                        <a id="barra2-Home" class="nav-link " href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="barra2-viagem" class="nav-link" href="https://www.klm.pt/trip">A minha viagem</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="barra2-check-in" class="nav-link" href="https://www.klm.pt/check-in">Check-in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="barra2-informacoes" class="nav-link" href="https://www.klm.pt/information">Informações</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <div id="content">
+
+
+        <div id="container1">
+
+
+            <div class="containerInterno" id="banner">
+                <div class="placar">
+
+                    <h1 id="placarTitle">Tudo começa com um clique...</h1>
+                    <p id="placarText">
+                        Reserve agora para desfrutar das vantagens únicas da KLM.
+                        A sua próxima aventura aguarda por si!
+                    </p>
+                    <div id="placarContainer"><a href="#" id="placarBtn" class="btnPlacar">Reserve já &rsaquo;</a>&rsaquo;</div>
+                </div>
+
+            </div>
+            <div class="abas-container">
+                <div id="reservaVoo" class="aba ativa">
+                    Reservar um voo
+                </div>
+                <div id="reservaMilhas" class="aba">
+                    Reservar com Milhas
+                </div>
+                <div id="estadoVoos" class="aba">
+                     Estado do voo
+                </div>
+            </div>
+            <div id="terceira-aba" class="container-formulario ">
+
+                <form class="formulario-voo active">
+                    <!-- Campo Ida e Volta -->
+
+                    <div class="grupo-formulario">
+
+                        <select id="tipo-viagem" name="tipo-viagem">
+                            <option id="estadoVoo-ida" value="ida">Voo de ida</option>
+                            <option id="estadoVoo-volta" value="regresso">Voo de regresso</option>
+                        </select>
+                    </div>
+
+                    <!-- Campo Partida -->
+                    <div class="grupo-formulario ">
+
+                        <input type="text" class="input-com-imagem-1"  id="partida" name="partida" value="Lisboa" placeholder="Partida">
+                    </div>
+
+                    <!-- Campo Chegada -->
+                    <div class="grupo-formulario">
+
+                        <input type="text" class="input-com-imagem-2" id="chegada" name="chegada" value="Lisboa" placeholder="Chegada a">
+                    </div>
+
+                    <!-- Botão Continuar -->
+                    <div class="grupo-formulario">
+                        <button type="button" id="botao-continuar-EV" class="botao-continuar-EV">Continuar <span>&#9660;</span></button>
+                    </div>
+
+                </form>
+
+
+                <form class="formulario-voo formInferior">
+                    <!-- Campo Ida e Volta -->
+
+                    <!-- Campo datas de viagens
+                     Abaixo quando o input for selecionado o seu type será texto e o placeholder ficará "Datas de Viagens" e ao selecionar o input será visivel o camp ode data com o type date -->
+                    <div class="grupo-formulario">
+                        <input type="text" id="data" name="data" placeholder="Datas de Viagens =>"
+                            onfocus="(this.type='date')" onblur="(this.type='text')">
+                    </div>
+
+                   
+
+                    <!-- Botão Continuar -->
+
+                </form>
+
+                <form class="formulario-voo formInferior">
+
+                  
+                    <!-- Botão Continuar -->
+                    <div class="grupo-formulario">
+                        <button type="button" id="btn-pesquisaVoos" class="btn-pesquisaVoos">Pesquisa Voos </button>
+                    </div>
+
+
+
+                </form>
+                <form class="formulario-voo formInferior">
+                    <div id="resultado"></div>
+                </form>
+            </div>
+            <div id="segunda-aba" class="container-formulario ">
+
+                <div class="logo">
+                    <img src="imagens/flyingblue.png" alt="Flying Blue Logo" />
+                </div>
+                <div class="info">
+                    <h1 id="milhasTitle">Milhas Flying Blue</h1>
+                    <p id="milhasText">Inicie sessão na sua conta Flying Blue para reservar um bilhete com Milhas.</p>
+                </div>
+                <div class="button-container">
+                    <button id="milhasBtn" class="login-button">Iniciar sessão</button>
+                </div>
+
+
+            </div>
+            <div id="primeira-aba" class="container-formulario active ">
+
+                <form class="formulario-voo active">
+                    <!-- Campo Ida e Volta -->
+    
+                    <div class="grupo-formulario">
+    
+                        <select id="primeira-aba-tipo-viagem" name="tipo-viagem">
+                            <option id="primeira-aba-vooIda" value="ida">Voo de ida</option>
+                            <option id="primeira-aba-vooVolta" value="regresso">Voo de regresso</option>
+                        </select>
+                    </div>
+    
+                    <!-- Campo Partida -->
+                    <div class="grupo-formulario ">
+    
+                        <input type="text" class="input-com-imagem-1"  id="primeira-aba-partida" name="partida" value="Lisboa" placeholder="Partida">
+                    </div>
+    
+                    <!-- Campo Chegada -->
+                    <div class="grupo-formulario">
+    
+                        <input type="text" class="input-com-imagem-2" id="primeira-aba-chegada" name="chegada" value="Lisboa" placeholder="Chegada a">
+                    </div>
+    
+                    <!-- Botão Continuar -->
+                    <div class="grupo-formulario">
+                        <button id="primeiraAbaBtnCOntinuar" type="button" class="botao-continuar">Continuar <span>&#9660;</span></button>
+                    </div>
+    
+                </form>
+    
+    
+                <form class="formulario-voo formInferior">
+                    <!-- Campo Ida e Volta -->
+    
+                    <!-- Campo datas de viagens
+                     Abaixo quando o input for selecionado o seu type será texto e o placeholder ficará "Datas de Viagens" e ao selecionar o input será visivel o camp ode data com o type date -->
+                    <div class="grupo-formulario">
+                        <input type="text" id="primeira-aba-data" name="data" placeholder="Datas de Viagens =>"
+                            onfocus="(this.type='date')" onblur="(this.type='text')">
+                    </div>
+    
+                    <!-- Campo Chegada -->
+                    <div class="grupo-formulario">
+    
+                        <input type="text" id="primeira-aba-pessoas"placeholder="1 Adulto">
+                    </div>
+                    <!-- Campo Ida e Volta -->
+    
+                    <div class="grupo-formulario">
+    
+                        <select id="primeira-aba-tipo-viagem" name="tipo-viagem">
+                            <option id="primeira-aba-economica">Economy</option>
+                            <option id="primeira-aba-premium">Premium Comfort</option>
+                            <option id="primeira-aba-Business">Business</option>
+                        </select>
+    
+                    </div>
+    
+                    <!-- Botão Continuar -->
+    
+                </form>
+    
+                <form class="formulario-voo formInferior">
+    
+                    <div class="toggle-container">
+                        <input hidden type="checkbox" id="toggle" class="toggle-checkbox">
+                        <label for="toggle" class="toggle-label">
+                            <span class="toggle-ball"></span>
+    
+                        </label>
+                    </div>
+                    <div class="grupo-formulario">
+                        <p id="reservaEmp">
+                            Quero reservar com um contrato bluebiz ou empresarial</p>
+                    </div>
+                    <!-- Botão Continuar -->
+                    <div class="grupo-formulario">
+                        <button type="button" id="primeira-aba-PesquisaVoos" class="btn-pesquisaVoos">Pesquisa Voos </button>
+                    </div>
+    
+    
+    
+                </form>
+          
+            </div>
+        </div>
+       
+            
+
+
+
+        </div>
+
+       
+
+        <div id="promocoes">
+
+
+            <div class="" id="vHeader">
+                <h3 id="promocoes-Title">Destinos e ofertas</h3>
+                <div id = "seccaoVoosButtonsDiv">
+                    <a id="op1" class="btn-SeccaoVoos">
+                        Voos
+                    </a>
+                    <a id="op2" class="btn-SeccaoVoos" >
+                        Prémios promocionais</a>
+                </div>
+                <p id="aeroportoText">Descubra as nossas melhores ofertas da classe Economy em voos com partida de</p>
+                <form action="" id="formAeroporto">
+                    <select id="aeroporto" name="tipo-viagem">
+                        <option id="ida-volta" value="ida-volta">Lisboa, Humberto Delgado Airport (LIS)</option>
+                        <option id="somente-ida" value="somente-ida">Porto, Francisco Sá Carneiro Airport (OPO)</option>
+                    </select>
+                </form>
+              
+            </div>
+           
+            <div class="seccaoVoos" id="v1">
+                <div class="Aimg" id="voo1"></div>
+                <div class="detalhes-promocao destinoLoc">
+                    <p id="v1Cidade" class="destino-promocao">Deli</p>
+                    <p id="v1Pais" class="pais-promocao">(Índia)</p>
+                    
+
+                </div>
+                <div class="detalhes-promocao preco">
+                    <p id="v1Preco" class="preco-promocao">De 585 EUR*</p>
+
+                </div>
+                <div class="detalhes-promocao tipoVIagem">
+                    <img src="imagens/setas.png" alt="" id="setas">
+                    <p id="v1TipoViagem" class="info-promocao">Ida e volta</p>
+                </div>
+                <a href="#" id="v1Btn" class="botao-promocao">Tarifa Promo</a> <img src="imagens/info.png" alt="" id="info">
+            </div>
+            <div class="seccaoVoos" id="v2">
+                <div class="Aimg" id="voo2"></div>
+                <div class="detalhes-promocao destinoLoc">
+                    <p id="v2Cidade" class="destino-promocao">Copenhaga</p>
+                    <p id="v2Pais" class="pais-promocao">(Dinamarca)</p>
+
+                </div>
+                <div class="detalhes-promocao preco">
+                    <p id="v2Preco" class="preco-promocao">De 164 EUR*</p>
+
+                </div>
+                <div class="detalhes-promocao tipoVIagem">
+                    <img src="imagens/setas.png" alt="" id="setas">
+                    <p id="v2TipoViagem" class="info-promocao">Ida e volta</p>
+                </div>
+                <a href="#" id="v2Btn"class="botao-promocao">Tarifa Promo</a><img src="imagens/info.png" alt="" id="info">
+            </div>
+            <div class="seccaoVoos" id="v3">
+                <div class="Aimg" id="voo3"></div>
+                <div class="detalhes-promocao destinoLoc">
+                    <p id="v3Cidade" class="destino-promocao">Portland, OR</p>
+                    <p id="v3Pais" class="pais-promocao">(Estados Unidos)</p>
+
+                </div>
+                <div class="detalhes-promocao preco">
+                    <p id ="v3Preco" class="preco-promocao">De 745 EUR*</p>
+
+                </div>
+                <div class="detalhes-promocao tipoVIagem">
+                    <img src="imagens/setas.png" alt="" id="setas">
+                    <p id="v3TipoViagem" class="info-promocao">Ida e volta</p>
+                </div>
+                <a href="#" id="v3Btn" class="botao-promocao">Tarifa Promo</a><img src="imagens/info.png" alt="" id="info">
+            </div>
+            <div class="seccaoVoos" id="v4">
+                <div class="Aimg" id="voo4"></div>
+                <div class="detalhes-promocao destinoLoc">
+                    <p  id="v4Cidade" class="destino-promocao">Fortaleza</p>
+                    <p id="v4Pais" class="pais-promocao">(Brasil)</p>
+
+                </div>
+                <div class="detalhes-promocao preco">
+                    <p id="v4Preco" class="preco-promocao">De 558 EUR*</p>
+
+                </div>
+                <div class="detalhes-promocao tipoVIagem">
+                    <img src="imagens/setas.png" alt="" id="setas">
+                    <p id="v4TipoViagem" class="info-promocao">Ida e volta</p>
+                </div>
+                <a href="#" id="v4Btn" class="botao-promocao">Tarifa Promo</a><img src="imagens/info.png" alt="" id="info">
+            </div>
+            <div class="seccaoVoos" id="v5">
+                <div class="Aimg" id="voo5"></div>
+                <div class="detalhes-promocao destinoLoc">
+                    <p id="v5Cidade" class="destino-promocao">Cidade do Cabo</p>
+                    <p id="v5Pais" class="pais-promocao">(África do Sul)</p>
+
+                </div>
+                <div class="detalhes-promocao preco">
+                    <p id="v5Preco" class="preco-promocao">De 646 EUR*</p>
+
+                </div>
+                <div class="detalhes-promocao tipoVIagem">
+                    <img src="imagens/setas.png" alt="" id="setas">
+                    <p id="v5TipoViagem" class="info-promocao">Ida e volta</p>
+                </div>
+                <a href="#" id="v5Btn" class="botao-promocao">Tarifa Promo</a><img src="imagens/info.png" alt="" id="info">
+            </div>
+            <div class="seccaoVoos" id="v6">
+                <div class="Aimg" id="voo6"></div>
+                <div class="detalhes-promocao destinoLoc">
+                    <p id="v6Cidade" class="destino-promocao">Tóquio</p>
+                    <p id="v6Pais" class="pais-promocao">(Japão)</p>
+
+                </div>
+                <div class="detalhes-promocao preco">
+                    <p id="v6Preco" class="preco-promocao">De 672 EUR*</p>
+
+                </div>
+                <div class="detalhes-promocao tipoVIagem">
+                    <img src="imagens/setas.png" alt="" id="setas">
+                    <p id="v6TipoViagem" class="info-promocao">Ida e volta</p>
+                </div>
+                <a id="v6Btn" href="#" class="botao-promocao">Tarifa Promo</a><img src="imagens/info.png" alt="" id="info">
+            </div>
+           
+    
+
+            <p id="promo-alert">* Os preços indicados são para um adulto. Todos os valores estão em EUR. Estão incluídas
+                taxas e suplementos. Não é aplicável taxa de reserva. Os preços apresentados poderão variar consoante a
+                disponibilidade da tarifa.</p>
+            <button id="verMais" class="login-button">Explore todas as ofertas</button>
+        </div>
+
+        <div id="container3">
+            <div id="title">
+                <h3 id="seccaoArtigosTitle">Mantenha-se atualizado/a</h3>
+            </div>
+
+            <div class="seccaoArtigos" id="art1">
+                <div class="Aimg" id="artImg1"></div>
+                <div class="artText" id="artText-1">
+                    <h4>Amesterdão no Natal</h4>
+                    <p>
+                        Visite os inúmeros mercados de Natal nos Países Baixos.</p>
+                </div>
+            </div>
+            <div class="seccaoArtigos" id="art2">
+                <div class="Aimg" id="artImg2"></div>
+                <div class="artText" id="artText-2">
+                    <h4>Já conhece o BlueBiz?</h4>
+                    <p>
+
+                        Registe-se no programa corporativo da Air France, KLM e Delta Air Lines e receba benefícios
+                        exclusivos.</p>
+                </div>
+            </div>
+            <div class="seccaoArtigos" id="art3">
+                <div class="Aimg" id="artImg3"></div>
+                <div class="artText" id="artText-3">
+                    <h4>Experimente a Premium Comfort</h4>
+                    <p>
+
+
+                        Desfrute de espaço e conforto adicionais na nossa Classe Premium Comfort</p>
+                </div>
+            </div>
+            <div class="seccaoArtigos" id="art4">
+                <div class="Aimg" id="artImg4"></div>
+                <div class="artText" id="artText-4">
+                    <h4>Sustentabilidade</h4>
+                    <p>O que fazemos e como pode ajudar.</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="container">
+            <h1 id="container-h1">Procura mais do que um voo?</h1>
+            <div class="services">
+                <div class="service">
+                    <img src="imagens/i1.png" alt="Alugar uma viatura">
+                    <h3 id="service1-title">Alugar uma viatura</h3>
+                    <p id="service1-content">Reserve o seu carro com a Hertz a um preço favorável e ganhe Milhas.</p>
+                </div>
+                <div class="service">
+                    <img src="imagens/i2.png" alt="Encontre a sua próxima estadia">
+                    <h3 id="service2-title">Encontre a sua próxima estadia</h3>
+                    <p id="service2-content">Reserve o seu alojamento com Booking.com e receba Milhas.</p>
+                </div>
+                <div class="service">
+                    <img src="imagens/i3.png" alt="Estacione no aeroporto">
+                    <h3 id="service3-title">Estacione no aeroporto</h3>
+                    <p id="service3-content">Reserve o seu lugar de estacionamento com antecedência.</p>
+                </div>
+                <div class="service">
+                    <img src="imagens/i4.png" alt="Mantenha-se ligado">
+                    <h3 id="service4-title">Mantenha-se ligado, a qualquer momento</h3>
+                    <p id="service4-content">Escolha um pacote de dados e mantenha-se online durante a viagem.</p>
+                </div>
+            </div>
+            <div class="discover-more">
+                <button id="conteiner-btn" class="login-button">Descobrir mais</button>
+            </div>
+        </div>
+
+    <div id="container7">
+                
+
+        <div class="seccaoC" id="c1">
+
+            <div class="artF">
+                <h4 id="artF-title">Inspire-se</h4>
+                <p id="artF-content">Explore as suas ideias e planeie a próxima viagem.</p>
+            </div>
+        </div>
+
+                
+
+        <div class="seccaoP" id="ideia1">
+            <div class="Aimg" id="pt1"></div>
+            <div class="artP">
+                <h4 id="ideia1-Title">Netherlands</h4>
+                <p id="ideia1-content">
+                    Amsterdam</p>
+            </div>
+        </div>
+        <div class="seccaoP" id="ideia2">
+            <div class="Aimg" id="pt2"></div>
+            <div class="artP">
+                <h4 id="ideia2-Title">Japan</h4>
+                <p id="ideia1-content">
+                    Tokyo</p>
+            </div>
+        </div>
+        <div class="seccaoP" id="ideia3">
+            <div class="Aimg" id="pt3"></div>
+            <div class="artP">
+                <h4 id="ideia3-Title">United States Of America</h4>
+                <p id="ideia1-content">
+
+                    New York</p>
+            </div>
+        </div>
+        <div class="seccaoP" id="ideia4">
+            <div class="Aimg" id="pt4"></div>
+            <div class="artP">
+                <h4 id="ideia4-Title">Thailand</h4>
+                <p id="ideia4-content">Bangkok
+
+                </p>
+            </div>
+        </div>
+        <div class="discover-more">
+            <button id="conteine7r-btn" class="login-button">Descobrir novos destinos</button>
+        </div>
+    </div>
+
+        <div id="container6">
+                
+
+            <div class="seccaoF" id="f1">
+    
+                <div class="artF">
+                    <h4 id="ofertasEsp-title">Procura ofertas especiais?</h4>
+                    <p id="ofertasEsp-content" >Subscreva aqui para receber ofertas personalizadas e inspiração de viagem diretamente na sua caixa de e-mail.</p>
+                   
+                </div>
+              <div id="buttonContainer">
+                 <button id="conteiner7-btn" >Inscreva-se já</button>
+              </div>
+
+            </div>
+        </div>   
+    
+
+
+
+
+
+    </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Sobre Nós -->
+            <div class="footer-column">
+                <h4 id="contact_us">Contacte-nos</h4>
+                <ul>
+                    <li><a id="todas_opcoes_contato" href="#">Todas as opções de contato</a></li><br>
+                    <li><a id="reembolso" href="#">Reembolso</a></li><br>
+                    <li><a id="reclamacoes" href="#">Reclamações</a></li><br>
+                    <li><a id="passageiros_deficiencia" href="#">Passageiros com deficiência</a></li><br>
+                    <li><a id="solicitar_fatura" href="#">Solicitar uma fatura</a></li><br>
+                </ul>
+                
+            </div>
+
+            <!-- Navegação Rápida -->
+            <div class="footer-column">
+                <h4 id="sobreKml">Sobre a KLM</h4>
+                <ul>
+                    <li><a href="#" id="empresa">Empresa</a></li><br>
+                    <li><a href="#" id="imprensa">Imprensa</a></li><br>
+                    <li><a href="#" id="sustentabilidade">Sustentabilidade</a></li><br>
+                    <li><a href="#" id="carreiras">Carreiras</a></li><br>
+                    <li><a href="#" id="parceiros">Parceiros</a></li><br>
+                    <li><a href="#" id="afiliar_se">Afiliar-se</a></li><br>
+                    <li><a href="#" id="ingles">Inglês</a></li><br>
+
+
+                </ul>
+            </div>
+
+            <!-- Contato -->
+            <div class="footer-column">
+                <h4 id="ofertas">Ofertas</h4>
+                <ul>
+                    <li><a href="#" id="todas_ofertas">Todas as ofertas</a></li><br>
+                    <li><a href="#" id="descontos_flying_blue">Descontos Flying Blue</a></li><br>
+                    
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 id="maisKml">Mais sobre KLM</h4>
+                <ul>
+                    <li><a href="#" id="newsletter">Newsletter</a></li><br>
+                    <li><a href="#" id="escolher_klm">Por que razão deve escolher a KLM</a></li><br>
+                    <li><a href="#" id="casas_delft_blue">Casas Delft Blue da KLM</a></li><br>
+
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 id="app">Descarregar a app</h4>
+
+                <div class="download-buttons">
+                    <a href="https://www.apple.com/app-store/" target="_blank" class="app-store">
+                        <div class="store-box">
+                            <img src="imagens/appStore.png" alt="App Store" class="store-image">
+                            <span id="appImg">Download on the App Store</span>
+                        </div>
+                    </a>
+                    <a href="https://play.google.com/store" target="_blank" class="google-play">
+                        <div class="store-box">
+                            <img src="imagens/playStore.png" alt="Google Play" class="store-image">
+                            <span id="playImg">GET IT ON Google Play</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- Redes Sociais -->
+            <div class="footer-column">
+                <h4 id="websitesRelacionados">Websites relacionados</h4>
+                <ul>
+                    <li><a href="#">airfrance.com</a></li><br>
+                    <li><a href="#">airfranceklm.com</a></li><br>
+                    <li><a href="#">skyteam.com</a></li><br>
+                    <li><a href="#">flyingblue.com</a></li><br>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 id="guiasViagem">Guias de viagem</h4>
+                <ul>
+                    <li><a href="#" id="amesterdao">Amesterdão</a></li><br>
+                    <li><a href="#" id="banguecoque">Banguecoque</a></li><br>
+                    <li><a href="#" id="beijing">Beijing</a></li><br>
+                    <li><a href="#" id="deli">Deli</a></li><br>
+                    <li><a href="#" id="dempasar_bali">Dempasar-Bali</a></li><br>
+                    <li><a href="#" id="gotemburgo">Gotemburgo</a></li><br>
+                    <li><a href="#" id="hong_kong">Hong Kong</a></li><br>
+                    <li><a href="#" id="nova_iorque">Nova Iorque</a></li><br>
+                    <li><a href="#" id="xangai">Xangai</a></li><br>
+                    <li><a href="#" id="mais_guias_viagem">Mais guias de viagem</a></li><br>
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 id="topDestinos">Top Destinos</h4>
+                <ul>
+                    <li><a href="#" id="amesterdao">Amesterdão</a></li><br>
+                    <li><a href="#" id="berlim">Berlim</a></li><br>
+                    <li><a href="#" id="billund">Billund</a></li><br>
+                    <li><a href="#" id="copenhaga">Copenhaga</a></li><br>
+                    <li><a href="#" id="gotemburgo">Gotemburgo</a></li><br>
+                    <li><a href="#" id="helsinquia">Helsínquia</a></li><br>
+                    <li><a href="#" id="nova_iorque">Nova Iorque</a></li><br>
+                    <li><a href="#" id="oslo">Oslo</a></li><br>
+                    <li><a href="#" id="estocolmo">Estocolmo</a></li><br>
+                    <li><a href="#" id="mais_voos">Mais voos</a></li><br>
+                    
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 id="maisProcurados">Países mais procurados</h4>
+                <ul>
+                    <li><a href="#" id="china">China</a></li><br>
+                    <li><a href="#" id="dinamarca">Dinamarca</a></li><br>
+                    <li><a href="#" id="finlandia">Finlândia</a></li><br>
+                    <li><a href="#" id="alemanha">Alemanha</a></li><br>
+                    <li><a href="#" id="holanda">Holanda</a></li><br>
+                    <li><a href="#" id="noruega">Noruega</a></li><br>
+                    <li><a href="#" id="suecia">Suécia</a></li><br>
+                    <li><a href="#" id="reino_unido">Reino Unido</a></li><br>
+                    <li><a href="#" id="estados_unidos_america">Estados Unidos da América</a></li><br>
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 id="populares">Destinos populares</h4>
+                <ul>
+                    <li><a href="#" id="lisboa_amesterdao">Lisboa - Amesterdão</a></li><br>
+                    <li><a href="#" id="lisboa_copenhaga">Lisboa - Copenhaga</a></li><br>
+                    <li><a href="#" id="lisboa_dublin">Lisboa - Dublin</a></li><br>
+                    <li><a href="#" id="lisboa_gotemburgo">Lisboa - Gotemburgo</a></li><br>
+                    <li><a href="#" id="lisboa_helsinquia">Lisboa - Helsínquia</a></li><br>
+                    <li><a href="#" id="lisboa_nova_york">Lisboa - Nova Iorque</a></li><br>
+                    <li><a href="#" id="lisboa_estocolmo">Lisboa - Estocolmo</a></li><br>
+                    <li><a href="#" id="porto_amesterdao">Porto - Amesterdão</a></li><br>
+                    
+                </ul>
+            </div>
+        </div>
+
+        <div class="legal-links">
+            <ul>
+                <li><a href="#" id="informacoes_legais">Informações legais</a></li><br>
+                <li><a href="#" id="declaracao_privacidade">Declaração de privacidade</a></li><br>
+                <li><a href="#" id="declaracao_acessibilidade">Declaração de acessibilidade</a></li><br>
+                <li><a href="#" id="livro_reclamacoes">Livro de reclamações</a></li><br>
+                <li id="klm_2024">© 2024 KLM</li><br>
+                <li><a href="#" id="definicoes_cookies">Definições de cookies</a></li><br>
+                
+            </ul>
+        </div>
+
+    </footer>
+
+
+    <script type="text/javascript" src="script.js"></script>
+
+</body>
+
+</html>

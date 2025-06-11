@@ -1,0 +1,464 @@
+{
+    "Portugal-PT": {
+        "page":{
+            "promocoes-Title":"Destinos e ofertas",
+            "op1":"Voos",
+            "op2":"Prémios promocionais",
+            "aeroportoText":"Descubra as nossas melhores ofertas da classe Economy em voos com partida de",
+            "ida-volta":"Lisboa, Humberto Delgado Airport (LIS)",
+            "somente-ida":"Porto, Francisco Sá Carneiro Airport (OPO)",
+            "v1Cidade":"Deli",
+            "v1Pais":"(Índia)",
+            "v1Preco":"De 585 EUR*",
+            "v1TipoViagem":"Ida e volta",
+            "v1Btn":"Tarifa Promo",
+
+            "v2Cidade":"Copenhaga",
+            "v2Pais":"(Dinamarca)",
+            "v2Preco":"De 164 EUR*",
+            "v2TipoViagem":"Ida e volta",
+            "v2Btn":"Tarifa Promo",
+
+            "v3Cidade":"Portland, OR",
+            "v3Pais":"(Estados Unidos)",
+            "v3Preco":"De 745 EUR*",
+            "v3TipoViagem":"Ida e volta",
+            "v3Btn":"Tarifa Promo",
+
+            "v4Cidade":"Fortaleza",
+            "v4Pais":"(Brasil)",
+            "v4Preco":"De 558 EUR*",
+            "v4TipoViagem":"Ida e volta",
+            "v4Btn":"Tarifa Promo",
+
+            
+            "v5Cidade":"Cidade do Cabo",
+            "v5Pais":"(África do Sul)",
+            "v5Preco":"De 646 EUR*",
+            "v5TipoViagem":"Ida e volta",
+            "v5Btn":"Tarifa Promo",
+
+            "v6Cidade":"Tóquio",
+            "v6Pais":"(Japão)",
+            "v6Preco":"De 672 EUR*",
+            "v6TipoViagem":"Ida e volta",
+            "v6Btn":"Tarifa Promo",
+
+            "primeira-aba-vooIda":"Voo de ida",
+            "primeira-aba-vooVolta":"Voo de regresso",
+            "primeira-aba-partida":"Partida",
+            "primeira-aba-chegada":"Chegada a",
+            "primeiraAbaBtnCOntinuar":"Continuar",
+            "primeira-aba-data":"Datas de Viagens =>",
+            "primeira-aba-pessoas":"1 Adulto",
+            "primeira-aba-economica": "Econômica",
+            "primeira-aba-premium": "Conforto Premium",
+            "primeira-aba-Business": "Executiva",
+            "reservaEmp":"Quero reservar com um contrato bluebiz ou empresarial",
+            "reservaVoo":" Reservar um voo",
+            "primeira-aba-PesquisaVoos":"Pesquisa Voos",
+           
+            "reservaMilhas": " Reservar com Milhas",
+            "milhasTitle": "Milhas Flying Blue",
+            "milhasText":"Inicie sessão na sua conta Flying Blue para reservar um bilhete com Milhas.",
+            "milhasBtn":"Iniciar sessão",
+
+            "estadoVoo-ida":"Voo de ida",
+            "estadoVoo-volta": "Voo de regresso",
+            "partida":"Partida",
+            "chegada": "Chegada a",
+            "botao-continuar-EV": "Continuar",
+            "data":"Datas de Viagens =>",
+            "btn-pesquisaVoos":"Pesquisa Voos ",
+            "estadoVoos":" Estado do voo",
+
+            "placarTitle": "Tudo começa com um clique...",
+            "placarText": " Reserve agora para desfrutar das vantagens únicas da KLM. A sua próxima aventura aguarda por si!",
+            "placarBtn": "Reserve já ",
+
+            "barra2-informacoes":"Informações",
+            "barra2-check-in":"Check-in",
+            "barra2-viagem":"A minha viagem",
+            "barra2-Home":"Home",
+
+            
+            "subMenuLogin-login":"Efetuar Login",
+            "subMenuLogin-inscricao":"Inscrever-se",
+            "searchTexto": "efetuar Login",
+
+            "sandwichMenu-home": "Home",
+            "sandwichMenu-viagem": "A minha viagem",
+            "sandwichMenu-check-In": "Check-in",
+            "sandwichMenu-Informacao": "Informações",
+
+
+            "container-h1":"Procura mais do que um voo?",
+
+            "service1-title": "Alugar uma viatura",
+            "service1-content":"Reserve o seu carro com a Hertz a um preço favorável e ganhe Milhas.",
+
+            "service2-title":"Encontre a sua próxima estadia",
+            "service2-content":"Reserve o seu alojamento com Booking.com e receba Milhas.",
+
+            "service3-title":"Estacione no aeroporto",
+            "service3-content":"Reserve o seu lugar de estacionamento com antecedência.",
+
+            "service4-title":"Mantenha-se ligado, a qualquer momento",
+            "service4-content":"Escolha um pacote de dados e mantenha-se online durante a viagem.",
+
+            "conteiner-btn":"Descobrir mais",
+
+
+
+            "artF-title": "Inspire-se",
+            "artF-content": "Explore as suas ideias e planeje a próxima viagem.",
+
+            "ideia1-Title": "Países Baixos",
+            "ideia1-content": "Amsterdã",
+
+            "ideia2-Title": "Japão",
+            "ideia2-content": "Tóquio",
+
+            "ideia3-Title": "Estados Unidos da América",
+            "ideia3-content": "Nova York",
+
+            "ideia4-Title": "Tailândia",
+            "ideia4-content": "Bangcoc",
+
+            "conteine7r-btn": "Descobrir novos destinos",
+            
+            "ofertasEsp-title": "Procura ofertas especiais?",
+            "ofertasEsp-content" : "Subscreva aqui para receber ofertas personalizadas e inspiração de viagem diretamente na sua caixa de e-mail.",
+
+            "conteiner7-btn":"Inscreva-se já"
+
+            
+
+
+
+
+
+
+
+        },
+         "promo_title": "Promoções de Voos",
+         "promo_de": "De",
+         "promo_eur": "EUR*",
+         "info_return": "Ida e volta",
+         "promo_button": "Tarifa Promo",
+         "promo_alert": "* Os preços indicados são para um adulto. Todos os valores estão em EUR. Estão incluídas taxas e suplementos. Não é aplicável taxa de reserva. Os preços apresentados poderão variar consoante a disponibilidade da tarifa.",
+         "explore_offers": "Explore todas as ofertas",
+         "keep_updated": "Mantenha-se atualizado/a",
+         "articles": {
+             "art1_title": "Amesterdão no Natal",
+            "art1_desc": "Visite os inúmeros mercados de Natal nos Países Baixos.",
+            "art2_title": "Já conhece o BlueBiz?",
+            "art2_desc": "Registe-se no programa corporativo da Air France, KLM e Delta Air Lines e receba benefícios exclusivos.",
+            "art3_title": "Experimente a Premium Comfort",
+            "art3_desc": "Desfrute de espaço e conforto adicionais na nossa Classe Premium Comfort",
+            "art4_title": "Sustentabilidade",
+            "art4_desc": "O que fazemos e como pode ajudar."
+        },
+        "artigos": {
+            "seccaoArtigosTitle": "Mantenha-se atualizado/a"
+        },
+        "footer": {
+            "contact_us": "Contacte-nos",
+                "todas_opcoes_contato": "Todas as opções de contato",
+                "reembolso": "Reembolso",
+                "reclamacoes": "Reclamações",
+                "passageiros_deficiencia": "Passageiros com deficiência",
+                "solicitar_fatura": "Solicitar uma fatura",
+            "sobreKml": "Sobre a KLM",
+                "empresa": "Empresa",
+                "imprensa": "Imprensa",
+                "sustentabilidade": "Sustentabilidade",
+                "carreiras": "Carreiras",
+                "parceiros": "Parceiros",
+                "afiliar_se": "Afiliar-se",
+                "ingles": "Inglês",
+            "ofertas": "Ofertas",
+                 "todas_ofertas": "Todas as ofertas",
+                "descontos_flying_blue": "Descontos Flying Blue",
+            "maisKml": "Mais sobre KLM",
+                "newsletter": "Newsletter",
+                "escolher_klm": "Por que razão deve escolher a KLM",
+                "casas_delft_blue": "Casas Delft Blue da KLM",
+            "app": "Descarregar a app",
+            "websitesRelacionados": "Websites relacionados",
+            "guiasViagem": "Guias de viagem",
+                "amesterdao": "Amesterdão",
+                "banguecoque": "Banguecoque",
+                "beijing": "Beijing",
+                "deli": "Deli",
+                "dempasar_bali": "Dempasar-Bali",
+                "gotemburgo": "Gotemburgo",
+                "hong_kong": "Hong Kong",
+                "nova_iorque": "Nova Iorque",
+                "xangai": "Xangai",
+                "mais_guias_viagem": "Mais guias de viagem",
+            "topDestinos": "Top Destinos",
+                "amesterdao": "Amesterdão",
+                "berlim": "Berlim",
+                "billund": "Billund",
+                "copenhaga": "Copenhaga",
+                "gotemburgo": "Gotemburgo",
+                "helsinquia": "Helsínquia",
+                "nova_iorque": "Nova Iorque",
+                "oslo": "Oslo",
+                "estocolmo": "Estocolmo",
+                "mais_voos": "Mais voos",
+            "maisProcurados": "Países mais procurados",
+                "china": "China",
+                "dinamarca": "Dinamarca",
+                "finlandia": "Finlândia",
+                "alemanha": "Alemanha",
+                "holanda": "Holanda",
+                "noruega": "Noruega",
+                "suecia": "Suécia",
+                "reino_unido": "Reino Unido",
+                "estados_unidos_america": "Estados Unidos da América",
+            "populares": "Destinos Populares",
+                "lisboa_amesterdao": "Lisboa - Amesterdão",
+                "lisboa_copenhaga": "Lisboa - Copenhaga",
+                "lisboa_dublin": "Lisboa - Dublin",
+                "lisboa_gotemburgo": "Lisboa - Gotemburgo",
+                "lisboa_helsinquia": "Lisboa - Helsínquia",
+                "lisboa_nova_york": "Lisboa - Nova Iorque",
+                "lisboa_estocolmo": "Lisboa - Estocolmo",
+                "porto_amesterdao": "Porto - Amesterdão",
+            "informacoes_legais": "Informações legais",
+                "declaracao_privacidade": "Declaração de privacidade",
+                "declaracao_acessibilidade": "Declaração de acessibilidade",
+                "livro_reclamacoes": "Livro de reclamações",
+                "klm_2024": "© 2024 KLM",
+                "definicoes_cookies": "Definições de cookies"
+        }
+    },
+    "Portugal-EN": {
+        "page": {
+            "promocoes-Title": "Destinations and Offers",
+            "op1": "Flights",
+            "op2": "Promotional Awards",
+            "aeroportoText": "Discover our best Economy Class offers on flights departing from",
+            "ida-volta": "Lisbon, Humberto Delgado Airport (LIS)",
+            "somente-ida": "Porto, Francisco Sá Carneiro Airport (OPO)",
+            "v1Cidade": "Delhi",
+            "v1Pais": "(India)",
+            "v1Preco": "From 585 EUR*",
+            "v1TipoViagem": "Round trip",
+            "v1Btn":"Promo Fare",
+            
+            "v2Cidade": "Copenhagen",
+            "v2Pais": "(Denmark)",
+            "v2Preco": "From 164 EUR*",
+            "v2TipoViagem": "Round trip",
+            "v2Btn": "Promo Fare",
+
+            "v3Cidade": "Portland, OR",
+            "v3Pais": "(United States)",
+            "v3Preco": "From 745 EUR*",
+            "v3TipoViagem": "Round trip",
+            "v3Btn": "Promo Fare",
+
+            "v4Cidade": "Fortaleza",
+            "v4Pais": "(Brazil)",
+            "v4Preco": "From 558 EUR*",
+            "v4TipoViagem": "Round trip",
+            "v4Btn": "Promo Rate",
+
+            "v5Cidade": "Cape Town",
+            "v5Pais": "(South Africa)",
+            "v5Preco": "From 646 EUR*",
+            "v5TipoViagem": "Round trip",
+            "v5Btn": "Promo Rate",
+
+            "v6Cidade": "Tokyo",
+            "v6Pais": "(Japan)",
+            "v6Preco": "From 672 EUR*",
+            "v6TipoViagem": "Round trip",
+            "v6Btn": "Promo Rate",
+
+            "primeira-aba-vooIda": "Outbound Flight",
+            "primeira-aba-vooVolta": "Return Flight",
+            "primeira-aba-partida": "Departure",
+            "primeira-aba-chegada": "Arrival at",
+            "primeiraAbaBtnCOntinuar": "Continue",
+            "primeira-aba-data": "Travel Dates =>",
+            "primeira-aba-pessoas": "1 Adult",
+            "primeira-aba-economica": "Economy",
+            "primeira-aba-premium": "Premium Comfort",
+            "primeira-aba-Business": "Business",
+            "reservaEmp": "I want to book with a bluebiz or corporate contract",
+            "reservaVoo": "Book a flight",
+            "primeira-aba-PesquisaVoos":"Flight Search",
+
+            "reservaMilhas": "Book with Miles",
+            "milhasTitle": "Flying Blue Miles",
+            "milhasText": "Log in to your Flying Blue account to book a ticket with Miles.",
+            "milhasBtn": "Log in",
+
+            "estadoVoo-ida": "Outbound Flight",
+            "estadoVoo-volta": "Return Flight",
+            "partida": "Departure",
+            "chegada": "Arrival at",
+            "botao-continuar-EV": "Continue",
+            "data": "Travel Dates =>",
+            "btn-pesquisaVoos": "Search Flights",
+            "estadoVoos": "Flight Status",
+
+       
+            "placarTitle": "It all starts with a click...",
+            "placarText": "Book now to enjoy the unique advantages of KLM. Your next adventure is waiting for you!",
+            "placarBtn": "Book now ",
+
+            "barra2-informacoes": "Information",
+            "barra2-check-in": "Check-in",
+            "barra2-viagem": "My Trip",
+            "barra2-Home": "Home",
+
+            "subMenuLogin-login": "Log In",
+            "subMenuLogin-inscricao": "Sign Up",
+            "searchTexto": "Log In",
+
+            "sandwichMenu-home": "Home",
+            "sandwichMenu-viagem": "My Trip",
+            "sandwichMenu-check-In": "Check-in",
+            "sandwichMenu-Informacao": "Information",
+
+            "container-h1": "Looking for more than a flight?",
+
+            "service1-title": "Rent a Car",
+            "service1-content": "Book your car with Hertz at a favorable price and earn Miles.",
+
+            "service2-title": "Find Your Next Stay",
+            "service2-content": "Book your accommodation with Booking.com and earn Miles.",
+
+            "service3-title": "Park at the Airport",
+            "service3-content": "Reserve your parking spot in advance.",
+
+            "service4-title": "Stay Connected Anytime",
+            "service4-content": "Choose a data package and stay online during your trip.",
+
+            "conteiner-btn": "Discover More",
+
+            "artF-title": "Get Inspired",
+            "artF-content": "Explore your ideas and plan your next trip.",
+
+            "ideia1-Title": "Netherlands",
+            "ideia1-content": "Amsterdam",
+
+            "ideia2-Title": "Japan",
+            "ideia2-content": "Tokyo",
+
+            "ideia3-Title": "United States of America",
+            "ideia3-content": "New York",
+
+            "ideia4-Title": "Thailand",
+            "ideia4-content": "Bangkok",
+
+            "conteine7r-btn": "Discover new destinations",
+
+            "ofertasEsp-title": "Looking for special offers?",
+            "ofertasEsp-content": "Subscribe here to receive personalized offers and travel inspiration directly in your inbox.",
+
+            "conteiner7-btn": "Sign Up Now"
+
+
+        },
+
+        "promo_title": "Flight Promotions",
+        "promo_de": "From",
+        "promo_eur": "EUR*",
+        "info_return": "Round trip",
+        "promo_button": "Promo Fare",
+        "promo_alert": "* The prices shown are for one adult. All amounts are in EUR. Taxes and supplements are included. No booking fee applies. The prices displayed may vary depending on tariff availability.",
+        "explore_offers": "Explore all offers",
+        "keep_updated": "Stay updated",
+        "articles": {
+            "art1_title": "Amsterdam at Christmas",
+            "art1_desc": "Visit the numerous Christmas markets in the Netherlands.",
+            "art2_title": "Have you heard of BlueBiz?",
+            "art2_desc": "Sign up for the corporate program of Air France, KLM, and Delta Air Lines to receive exclusive benefits.",
+            "art3_title": "Try Premium Comfort",
+            "art3_desc": "Enjoy extra space and comfort in our Premium Comfort Class.",
+            "art4_title": "Sustainability",
+            "art4_desc": "What we do and how you can help."
+        },
+        "artigos": {
+            "seccaoArtigosTitle": "Stay updated"
+        },
+        "footer": {
+            "contact_us": "Contact us",
+                "todas_opcoes_contato": "All contact options",
+                "reembolso": "Refund",
+                "reclamacoes": "Complaints",
+                "passageiros_deficiencia": "Passengers with disabilities",
+                "solicitar_fatura": "Request an invoice",
+                "sobreKml": "About KLM",
+                "empresa": "Company",
+                "imprensa": "Press",
+                "sustentabilidade": "Sustainability",
+                "carreiras": "Careers",
+                "parceiros": "Partners",
+                "afiliar_se": "Affiliate",
+                "ingles": "English",
+            "ofertas": "Offers",
+                "todas_ofertas": "All offers",
+                "descontos_flying_blue": "Flying Blue discounts",
+            "maisKml": "More about KLM",
+                "newsletter": "Newsletter",
+                "escolher_klm": "Why choose KLM",
+                "casas_delft_blue": "KLM Delft Blue houses",
+            "app": "Download the app",
+            "websitesRelacionados": "Related websites",
+            "guiasViagem": "Travel guides",
+                "amesterdao": "Amsterdam",
+                "banguecoque": "Bangkok",
+                "beijing": "Beijing",
+                "deli": "Delhi",
+                "dempasar_bali": "Denpasar-Bali",
+                "gotemburgo": "Gothenburg",
+                "hong_kong": "Hong Kong",
+                "nova_iorque": "New York",
+                "xangai": "Shanghai",
+                "mais_guias_viagem": "More travel guides",
+                "topDestinos": "Top destinations",
+                "amesterdao": "Amsterdam",
+                "berlim": "Berlin",
+                "billund": "Billund",
+                "copenhaga": "Copenhagen",
+                "gotemburgo": "Gothenburg",
+                "helsinquia": "Helsinki",
+                "nova_iorque": "New York",
+                "oslo": "Oslo",
+                "estocolmo": "Stockholm",
+                "mais_voos": "More flights",
+            "maisProcurados": "Most sought-after countries",
+                "china": "China",
+                "dinamarca": "Denmark",
+                "finlandia": "Finland",
+                "alemanha": "Germany",
+                "holanda": "Netherlands",
+                "noruega": "Norway",
+                "suecia": "Sweden",
+                "reino_unido": "United Kingdom",
+                "estados_unidos_america": "United States of America",
+            "populares": "Popular Destinations",
+                "lisboa_amesterdao": "Lisbon - Amsterdam",
+                "lisboa_copenhaga": "Lisbon - Copenhagen",
+                "lisboa_dublin": "Lisbon - Dublin",
+                "lisboa_gotemburgo": "Lisbon - Gothenburg",
+                "lisboa_helsinquia": "Lisbon - Helsinki",
+                "lisboa_nova_york": "Lisbon - New York",
+                "lisboa_estocolmo": "Lisbon - Stockholm",
+                "porto_amesterdao": "Porto - Amsterdam",
+            "informacoes_legais": "Legal Information",
+                "declaracao_privacidade": "Privacy Statement",
+                "declaracao_acessibilidade": "Accessibility Statement",
+                "livro_reclamacoes": "Complaints Book",
+                "klm_2024": "© 2024 KLM",
+                "definicoes_cookies": "Cookie Settings"
+        }
+    }
+}

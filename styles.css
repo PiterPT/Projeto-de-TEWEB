@@ -1,0 +1,5634 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Poppins";
+  src: url("assets/fonts/Poppins-Regular.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+}
+
+body.blur::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  /* Aplica o desfoque */
+  background: rgba(0, 0, 0, 0.3);
+  /* Fundo transparente */
+  z-index: 1000;
+}
+
+#content {
+  display: inline-block;
+  position: relative;
+  /* Necessário para que os filhos com position: absolute se alinhem a ele */
+}
+
+#container1 {
+  display: grid;
+  /* Define 12 colunas com proporções iguais */
+  grid-template-columns: repeat(12, 1fr);
+  /* Define as linhas com uma altura fixa */
+  grid-template-rows: repeat(9, minmax(80px, auto));
+  /* Define a largura total */
+  width: 100vw;
+  /* Remove a referência a grid-row, pois ela deve ser gerida pelos filhos */
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+}
+
+#banner {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  max-width: 90vw;
+  height: 90vh;
+  margin: 0px 5vw;
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+  background-color: rgba(52, 135, 57, 0.8);
+  z-index: 1;
+  background-image: url("imagens/banner.png");
+  background-repeat: no-repeat;
+  /* Impede que a imagem se repita */
+  background-size: cover;
+  /* Faz com que a imagem cubra todo o container */
+  background-position: center;
+  /* Centraliza a imagem */
+}
+
+.placar {
+  overflow: visible;
+  grid-row: 7/11;
+  grid-column: 7/11;
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  background: rgb(7, 43, 69);
+  /* Fundo translúcido */
+  opacity: 0.8;
+  color: white;
+  border-radius: 5px;
+  /* Bordas arredondadas */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  /* Sombra */
+  z-index: -1;
+}
+
+.placar h1 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  z-index: 1;
+}
+
+/* Parágrafo */
+.placar p {
+  margin: 0 0 20px 0;
+  line-height: 1.6;
+}
+
+#placarContainer {
+  width: 100%; /* O contêiner ocupa 100% da largura */
+  height: auto; /* Ajusta a altura ao conteúdo */
+  display: flex; /* Usando flexbox para organizar os elementos */
+  align-items: center; /* Centraliza verticalmente o conteúdo */
+  box-sizing: border-box; /* Garante que padding/bordas não afetem o tamanho */
+  text-indent: 5px;
+  white-space: nowrap; /* Garante que o texto não quebre */
+}
+
+#placarBtn {
+  width: auto; /* Faz o botão ocupar 100% da largura do pai */
+  white-space: nowrap; /* Garante que o texto não quebre */
+  text-align: center; /* Centraliza o texto dentro do botão */
+  padding: 10px 0; /* Adiciona espaçamento interno para o botão */
+  color: white; /* Cor do texto do botão */
+  border: none; /* Remove bordas do botão */
+  cursor: pointer; /* Altera o cursor para indicar que é clicável */
+}
+
+.btnPlacar {
+  margin-left: 76%;
+  display: inline-block;
+  /* O botão ocupa apenas o tamanho do texto */
+  text-decoration: none;
+  /* Remove o sublinhado padrão */
+  color: #ffffff;
+  /* Cor do texto */
+  background-color: transparent;
+  /* Fundo transparente */
+  border: none;
+  /* Sem bordas */
+  font-size: 16px;
+  /* Tamanho da fonte */
+  cursor: pointer;
+  /* Mostra o cursor "mão" */
+  position: relative;
+  /* Necessário para usar pseudo-elementos */
+  overflow: hidden;
+  /* Garante que a animação não ultrapasse o botão */
+}
+
+.btnPlacar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  /* Começa no lado esquerdo */
+  width: 0;
+  /* Inicialmente com largura 0 */
+  height: 2px;
+  /* Espessura da barra */
+  background-color: white;
+  /* Cor da barra */
+  transition: width 0.5s ease-out;
+  /* Animação suave para o aumento da largura */
+}
+
+.btnPlacar:hover::after {
+  width: 100%;
+  /* Quando hover, expande até a largura total do botão */
+}
+
+/* Definição da animação com keyframes (caso precise de keyframes ao invés de transições) */
+@keyframes growBar {
+  0% {
+    width: 0;
+    /* Começa com largura 0 */
+  }
+  100% {
+    width: 100%;
+    /* Cresce até ocupar toda a largura do botão */
+  }
+}
+.containerInterno {
+  width: 100%;
+  height: 100%;
+  background-color: aqua;
+  border: solid 2px 2px black;
+  z-index: 1;
+}
+
+.navbar {
+  position: fixed;
+  margin: 0px;
+  /* Fixa a navbar no topo da tela */
+  height: auto;
+  top: 0;
+  /* Alinha a navbar ao topo */
+  left: 0;
+  /* Alinha a navbar à esquerda */
+  width: 100vw;
+  /* Faz com que a navbar ocupe toda a largura da tela */
+  background-color: white;
+  /* Define a cor de fundo da navbar */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  /* Adiciona uma sombra para a navbar */
+  z-index: 1000;
+}
+
+.navbar.open {
+  height: 30vh;
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #000000;
+  margin-right: 20px;
+  /* Espaço entre o logo e os itens */
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 0px;
+  /* Espaçamento entre os itens de navegação */
+  list-style: none;
+  /* Remove marcadores da lista */
+  padding: 0;
+  margin: 0;
+  height: auto;
+  flex-grow: 1;
+}
+
+.nav-item a {
+  text-decoration: none;
+  /* Remove sublinhado dos links */
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item a:hover {
+  color: #000000;
+  opacity: 1;
+}
+
+.hamburger {
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 33px;
+  height: 3px;
+  background-color: #000000;
+  margin: 5px 0;
+  transition: 0.4s;
+  position: relative;
+  /* Garante que o posicionamento seja relativo */
+  transform-origin: center;
+  /* Garante que a rotação seja feita a partir do centro */
+}
+
+.change .bar1 {
+  transform: rotate(-45deg) translate(-6px, 6px);
+  /* Ajustar translate proporcionalmente */
+}
+.change .bar2 {
+  opacity: 0;
+  /* Permanece igual */
+}
+.change .bar3 {
+  transform: rotate(45deg) translate(-6px, -6px);
+  /* Ajustar translate proporcionalmente */
+}
+
+.p1 {
+  height: 100vh;
+  padding: 20% 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.p1 h1,
+.p1 p {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* css navbar/barra de navegaçao */
+.container-nav {
+  height: auto;
+  /* Altura inicial da navbar */
+  overflow: visible;
+  /* Esconde o conteúdo que ultrapassa a altura inicial */
+  transition: height 0.3s ease;
+  /* Transição suave para a altura */
+  padding: 0;
+  margin: 0;
+}
+
+.navbar.open {
+  height: 30vh;
+}
+
+.navbar-nav .nav-link {
+  color: #000000;
+  font-size: 1.1rem;
+  font-weight: 200;
+  padding: 10px;
+  flex-grow: 1;
+}
+
+#barra2 .navbar-nav .nav-link:hover {
+  color: #000000;
+  background-color: rgba(60, 55, 55, 0.047);
+  transition: 0.1s;
+}
+
+.navbar-nav .nav-item {
+  box-sizing: border-box;
+  /* Inclui border e padding no tamanho total */
+}
+
+.navbar-nav .nav-item.border-active {
+  color: #000000;
+  box-shadow: inset 0 -3.5px 0 0 orange;
+  /* Borda interna simulada */
+  background-color: rgba(60, 55, 55, 0.2);
+  transition: box-shadow 0.1s ease;
+}
+
+.navbar-nav .nav-item.border-active:hover {
+  color: #000000;
+  box-shadow: inset 0 -3.5px 0 0 orange;
+  /* Borda interna simulada */
+  background-color: rgba(60, 55, 55, 0.1);
+  transition: box-shadow 0.1s ease;
+}
+
+#navbar {
+  margin-left: 5%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-rows: repeat(auto-fill, 1fr);
+}
+
+#barra1 {
+  display: none;
+  /* Inicialmente escondido */
+  overflow: hidden;
+  /* Esconde o conteúdo enquanto o elemento expande */
+  max-height: 0;
+  /* Altura inicial é 0 para a animação */
+  transition: max-height 2.2s ease-out, padding 2.2s ease-out;
+  /* Anima a altura e o padding */
+  transition-duration: 2s;
+}
+#barra1.active {
+  display: flex;
+  /* Mostra o elemento */
+  align-items: center;
+  /* Alinha os itens verticalmente no centro */
+  width: 86vw;
+  /* Define a largura */
+  padding: 10px 15px;
+  /* Espaçamento interno animado */
+  max-height: 200px;
+  /* Ajuste para a altura máxima desejada */
+  transition: max-height 2.2s ease-out, padding 2.2s ease-out;
+  /* Garante uma transição suave */
+  animation: fadeSlideDown 0.5s ease-out;
+  /* Aplica animação ao surgimento */
+  /* Animação acima temporária, precisa de verificação para ver se é válida - por => Pedro*/
+}
+#barra1 .navbar-brand {
+  display: flex;
+  align-items: center;
+  color: #1da1db;
+  /* Azul claro */
+  text-decoration: none;
+  /* Remove sublinhado */
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5em;
+  font-weight: 400;
+  /* Fonte mais fina */
+  letter-spacing: 0.5px;
+  /* Espaçamento entre letras */
+  margin: 0;
+}
+#barra1 .navbar-toggler {
+  margin-right: 10px;
+  /* Espaçamento da esquerda */
+}
+#barra1 .texto {
+  margin-top: 17px;
+  margin-left: 10px;
+  /* Espaçamento entre logo e texto */
+  font-weight: bold;
+  /* faz com que o texto "Royal Dutch Airlines" fique a negrito*/
+  font-size: 1.3em;
+  margin-bottom: -3px;
+}
+#barra1 ul {
+  margin: auto;
+  /* Empurra o item de pesquisa para a direita */
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  /* Centraliza verticalmente */
+}
+#barra1 .search li {
+  list-style: none;
+  /* Remove o bullet padrão */
+  margin-left: 2%;
+  width: auto;
+  padding: 5px 20px;
+  position: relative;
+  /* Necessário para usar ::before */
+  cursor: pointer;
+  /* Mostra o ícone de clique */
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  /* Suaviza o efeito */
+}
+#barra1 .search li.loginLi::before {
+  content: "";
+  position: absolute;
+  width: auto;
+  background-size: cover;
+  /* Ajusta o tamanho proporcionalmente */
+  background-repeat: no-repeat;
+  /* Não repete a imagem */
+  z-index: 1;
+  /* Garante que fique sobre outros elementos visuais */
+  transition: inherit;
+  /* Aplica as transições do elemento pai */
+}
+#barra1 .search li.linguas::before {
+  content: "";
+  position: absolute;
+  background-size: cover;
+  /* Ajusta o tamanho proporcionalmente */
+  background-repeat: no-repeat;
+  /* Não repete a imagem */
+  z-index: 1;
+  /* Garante que fique sobre outros elementos visuais */
+  transition: inherit;
+  /* Aplica as transições do elemento pai */
+}
+#barra1 .search li.login:hover::before {
+  background-image: url("imagens/profile-user.png");
+  /* Ícone mantido visível no hover */
+}
+#barra1 .search svg {
+  width: 24px;
+  height: 24px;
+  fill: #000;
+  /* Cor do ícone de pesquisa */
+  cursor: pointer;
+  /* Cursor indicando ação clicável */
+}
+
+/* Animação personalizada */
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+    /* Começa acima */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    /* Chega à posição original */
+  }
+}
+.icon-img-nav {
+  left: 0;
+  /* Alinha o ícone à esquerda */
+  top: 50%;
+  /* Ajusta o alinhamento */
+  width: 20px;
+  /* Largura do ícone */
+  align-content: baseline;
+  height: 20px;
+  /* Altura do ícone */
+}
+
+.linguas .icon-img-nav {
+  width: 20px;
+  height: 15px;
+}
+
+/* Estilo geral para cada item da lista */
+.navbar-nav.search li {
+  display: flex;
+  /* Torna o conteúdo flexível */
+  align-items: center;
+  /* Centraliza o conteúdo verticalmente */
+  justify-content: center;
+  /* Centraliza horizontalmente */
+  width: 150px;
+  /* Define uma largura fixa */
+  height: 50px;
+  /* Define uma altura fixa */
+  box-sizing: border-box;
+  /* Inclui padding e borda no tamanho total */
+  border-radius: 6px;
+  /* Bordas arredondadas */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  /* Transições suaves */
+}
+
+.navbar-nav.search li.pesquisa {
+  width: 80px;
+  /* Define uma largura fixa */
+  height: 50px;
+  /* Define uma altura fixa */
+}
+
+/* Estilo para o link dentro de cada item */
+.navbar-nav.search li a {
+  text-decoration: none;
+  /* Remove sublinhado dos links */
+  font-size: 14px;
+  /* Tamanho do texto */
+  color: #333;
+  /* Cor do texto */
+  display: flex;
+  /* Torna o link flexível */
+  align-items: center;
+  /* Centraliza o texto e ícones verticalmente */
+  justify-content: center;
+  /* Centraliza horizontalmente */
+  width: 100%;
+  /* O link ocupa todo o espaço do item */
+  height: 100%;
+  /* O link ocupa toda a altura do item */
+}
+
+/* Ícones SVG dentro dos itens */
+.navbar-nav.search li svg {
+  width: 24px;
+  /* Tamanho do ícone */
+  height: 24px;
+  /* Tamanho do ícone */
+  fill: #333;
+  /* Cor do ícone */
+}
+
+/* Hover para os itens da lista */
+.navbar-nav.search li:hover {
+  background-color: rgb(235, 245, 251);
+  /* Cor de fundo ao passar o rato */
+}
+
+.navbar-nav.search li.pesquisa:hover {
+  background-color: rgb(235, 235, 235);
+  /* Cor de fundo ao passar o rato */
+}
+
+#barra2 {
+  grid-row: 2/3;
+  grid-column: 1/-1;
+}
+
+#barra2.desactive {
+  display: none;
+}
+
+/* Barra de Pesquisa */
+#containerPesquisa {
+  opacity: 0;
+  height: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transition: opacity 0.3s ease, height 0.3s ease;
+  width: 100%;
+  margin: 0 auto;
+}
+#containerPesquisa.active {
+  opacity: 1;
+  height: 30vh;
+  visibility: visible;
+  grid-row: 2/3;
+  grid-column: 1/-1;
+  z-index: 2000;
+}
+
+#pesquisaForm {
+  height: 100%;
+  width: 94.75%;
+  margin: 0;
+  vertical-align: center;
+}
+
+#searchBar {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 50%;
+  /* Move até o meio do container */
+  width: 88%;
+  height: 50%;
+  top: 50%;
+  /* Move até o meio do container */
+  left: 50%;
+  /* Opcional: para centralizar horizontalmente */
+  transform: translate(-50%, -50%);
+  /* Ajusta para o centro exato */
+  transform: translate(-50%, -50%);
+  /* Ajusta para o centro exato */
+}
+
+#searchBar:focus {
+  outline: none;
+  /* Remove o contorno ao focar */
+  border-color: initial;
+  /* Redefine a cor da borda */
+}
+
+/* Quando a topbar está aberta */
+.topbar.open {
+  height: 30vh;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* Altura do input */
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+#subMenuLinguas #pesquisaForm .input-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 30.5vw;
+  /* Altura do input */
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+input#searchBar {
+  width: 100%;
+  height: 100%;
+  padding-left: 40px;
+  /* Cria espaço à esquerda para o ícone */
+  border-radius: 5px;
+  /* Opcional: bordas arredondadas */
+  box-sizing: border-box;
+  /* Inclui padding na largura total */
+  background-color: transparent;
+  /* Deixa o fundo transparente */
+  z-index: 1;
+  /* Garante que o input fique acima da icon-box */
+}
+
+.icon-box {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  /* Ajuste horizontal */
+  transform: translateY(-50%);
+  /* Centraliza verticalmente */
+  width: 24px;
+  /* Largura do ícone */
+  height: 24px;
+  /* Altura do ícone */
+  background-image: url("imagens/iconPesquisa.png");
+  /* Caminho para a imagem */
+  background-size: cover;
+  /* Ajusta o ícone para preencher o espaço */
+  background-repeat: no-repeat;
+  /* Evita repetição */
+}
+
+#pesquisaIconClose {
+  display: none;
+}
+
+#pesquisaIconOpen.desactive {
+  display: none;
+}
+
+#pesquisaIconClose.active {
+  display: flex;
+}
+
+.navbarLateral {
+  position: fixed;
+  display: none;
+  margin: 0;
+  /* Remove margens */
+  width: 90vw;
+  /* Largura da barra lateral é 20% da largura da tela */
+  padding-top: 20vh;
+  /* Alinha a barra ao topo */
+  height: auto;
+  /* Faz com que a barra ocupe 100% da altura da viewport */
+  background-color: white;
+  /* Define a cor de fundo */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  /* Adiciona uma sombra */
+  z-index: 500;
+  /* Garante que a barra fique acima de outros elementos */
+  transition: left 0.5s ease;
+  /* Transição suave para a posição 'left' */
+}
+
+.navbar-navLateral {
+  display: flex;
+  gap: 0px;
+  width: 90vw;
+  margin: 0vw 5vw;
+  /* Espaçamento entre os itens de navegação */
+  list-style: none;
+  flex-direction: column;
+  /* Remove marcadores da lista */
+  padding: 0;
+  margin: 0;
+  height: auto;
+  flex-grow: 1;
+}
+.navbar-navLateral .nav-link {
+  color: #000000;
+  font-size: 1.1rem;
+  width: 90vw;
+  font-weight: 200;
+  padding: 10px;
+  padding-left: 20px;
+  flex-grow: 1;
+}
+.navbar-navLateral li {
+  list-style: none;
+  /* Remove o bullet padrão */
+  width: 90vw;
+  position: relative;
+  /* Necessário para usar ::before */
+  cursor: pointer;
+  /* Mostra o ícone de clique */
+  transition: box-shadow 0.5s ease, background-color 0.5s ease;
+  /* Suaviza o efeito */
+}
+.navbar-navLateral li:hover {
+  color: #000000;
+  background-color: rgba(60, 55, 55, 0.047);
+  transition: 0.1s;
+}
+.navbar-navLateral .nav-item.border-active {
+  color: #000000;
+  box-shadow: inset 3.5px 0 0 0 orange;
+  width: 90vw;
+  /* Borda interna simulada */
+  background-color: rgba(60, 55, 55, 0.2);
+  transition: box-shadow 0.1s ease;
+}
+.navbar-navLateral .nav-item.border-active:hover {
+  color: #000000;
+  box-shadow: inset 3.5px 0 0 0 orange;
+  /* Borda interna simulada */
+  background-color: rgba(60, 55, 55, 0.1);
+  transition: box-shadow 0.1s ease;
+}
+.navbar-navLateral.active {
+  display: flex;
+}
+
+#navbarLateral-row {
+  width: 17vw;
+  text-align: center;
+  opacity: 0.3;
+  display: flex;
+  /* Usa o Flexbox */
+  justify-content: center;
+  /* Centraliza horizontalmente */
+  align-items: center;
+  /* Centraliza verticalmente */
+}
+
+.p1 {
+  height: 100vh;
+  padding: 20% 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.p1 h1,
+.p1 p {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* barra superiro á topbar*/
+.topnavbar {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  transition: top 0.3s;
+}
+
+/* Conteúdo */
+.content {
+  padding: 100px 20px;
+  margin-top: 60px;
+  /* Espaço para a navbar */
+}
+
+.navbar-brand img {
+  max-width: 60px;
+  /* Define um tamanho máximo para a largura */
+  height: auto;
+  /* Mantém a proporção da imagem */
+  display: block;
+  /* Remove espaçamento indesejado em torno da imagem */
+}
+
+ul.active {
+  display: none;
+}
+
+.navbar-toggler {
+  display: none;
+  background-color: transparent;
+  border: none;
+  height: auto;
+  border-radius: 5px;
+  padding: 4px 6px;
+  margin: 5px;
+}
+
+.navbar-toggler:hover {
+  background-color: rgb(235, 235, 235);
+  /* Cor de fundo ao passar o rato */
+}
+
+#pesquisaIcon {
+  width: auto;
+  height: 20px;
+}
+
+.subMenu {
+  display: none;
+  position: fixed;
+  top: 15%;
+  right: 100px;
+  z-index: 9999;
+  width: 170px;
+  flex-direction: column;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  border-radius: 6px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.subMenu.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+.subMenu li {
+  padding: 12px 20px;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  border-radius: 0px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.subMenu li:hover {
+  background-color: #f0f0f0;
+  color: #007bff;
+}
+
+.login {
+  text-decoration: none;
+  /* Remove sublinhado do link */
+  position: relative;
+  /* Necessário para alinhar o ícone */
+  color: #000;
+  /* Cor do texto */
+  font-size: 16px;
+  /* Tamanho da fonte */
+  padding-left: 35px;
+  /* Espaço suficiente para o ícone */
+  display: inline-block;
+  /* Garante que o padding e alinhamento funcionem corretamente */
+  line-height: 1.5;
+  /* Alinhamento vertical confortável */
+  vertical-align: middle;
+  /* Ajusta o texto para centralizar melhor */
+}
+
+/*destinos e ofertas abaixo */
+/*Linhas com voos*/
+.seccaoVoos {
+  background-color: white;
+  /* Cor de fundo para as caixas */
+  overflow: hidden;
+  border-radius: 10px;
+  /* Arredondamento mais sutil e consistente */
+  /* Espaço entre as caixas */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Efeito de hover */
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  transition: 0.5s;
+  border-radius: 0px 0px 0px 0px;
+  /* Efeito de hover para dar mais destaque */
+}
+.seccaoVoos:hover {
+  background-color: #f8f8f8;
+  /* Efeito de escurecer o background */
+  padding: 10px;
+  /* Padding aumentado */
+  transition: 0.5s;
+}
+
+#v6 {
+  margin-bottom: 10px;
+}
+
+#setas {
+  width: 15px;
+  height: 15px;
+  transform: translateX(-10px);
+}
+
+#info {
+  width: 15px;
+  height: 15px;
+  grid-column: 11/13; /* Posiciona o elemento na coluna específica */
+  grid-row: 1/-1; /* Posiciona o elemento na linha específica */
+  justify-self: end; /* Alinha o elemento à direita na célula */
+  align-self: center; /* Centraliza verticalmente na célula */
+}
+
+#voo1 {
+  background-image: url("imagens/voo1Img.png");
+}
+
+#voo2 {
+  background-image: url("imagens/voo2Img.png");
+}
+
+#voo3 {
+  background-image: url("imagens/voo3Img.png");
+}
+
+#voo4 {
+  background-image: url("imagens/voo4Img.png");
+}
+
+#voo5 {
+  background-image: url("imagens/voo5Img.png");
+}
+
+#voo6 {
+  background-image: url("imagens/voo6Img.png");
+}
+
+/* Estilização do container */
+#promocoes {
+  display: grid;
+  /* ao usar substituir para "display grid"*/
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(auto-fill, 1fr);
+  height: auto;
+  width: 70vw;
+  grid-row: 2/3;
+  margin: 0vw 15vw;
+  padding: 1%;
+  margin-bottom: 10vh;
+  background-color: transparent;
+  box-sizing: border-box;
+  position: relative;
+}
+#promocoes #vHeader {
+  grid-row: 1/2;
+  grid-column: 1/14;
+  z-index: 1;
+}
+#promocoes #v1 {
+  grid-row: 2/4;
+  grid-column: 1/-1;
+  z-index: 1;
+  text-align: center;
+  justify-content: center;
+  border-bottom: 2px solid rgba(200, 200, 200, 0.5);
+}
+#promocoes #v1 .Aimg {
+  grid-row: 1/-1;
+  grid-column: 1/3;
+  margin: 15px;
+  background-color: #007bff;
+}
+#promocoes #v1 .destinoLoc {
+  grid-row: 1/-1;
+  grid-column: 3/6;
+  margin: 15px;
+  justify-content: center;
+  align-items: center;
+}
+#promocoes #v1 .preco {
+  grid-row: 1/-1;
+  grid-column: 6/8;
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+#promocoes #v1 .tipoVIagem {
+  grid-row: 1/-1;
+  grid-column: 8/10;
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+#promocoes #v1 .botao-promocao {
+  grid-row: 1/-1;
+  grid-column: 10/13;
+  margin: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+#promocoes #v2 {
+  grid-row: 4/6;
+  grid-column: 1/-1;
+  z-index: 1;
+  text-align: center;
+  justify-content: center;
+  border-bottom: 2px solid rgba(200, 200, 200, 0.5);
+}
+#promocoes #v2 .Aimg {
+  grid-row: 1/-1;
+  grid-column: 1/3;
+  margin: 15px;
+  background-color: #007bff;
+}
+#promocoes #v2 .destinoLoc {
+  grid-row: 1/-1;
+  grid-column: 3/6;
+  margin: 15px;
+  justify-content: center;
+  align-items: center;
+}
+#promocoes #v2 .preco {
+  grid-row: 1/-1;
+  grid-column: 6/8;
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+#promocoes #v2 .tipoVIagem {
+  grid-row: 1/-1;
+  grid-column: 8/10;
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+#promocoes #v2 .botao-promocao {
+  grid-row: 1/-1;
+  grid-column: 10/13;
+  margin: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+#promocoes #v3 {
+  grid-row: 6/8;
+  grid-column: 1/-1;
+  z-index: 1;
+  text-align: center;
+  justify-content: center;
+  border-bottom: 2px solid rgba(200, 200, 200, 0.5);
+}
+#promocoes #v3 .Aimg {
+  grid-row: 1/-1;
+  grid-column: 1/3;
+  margin: 15px;
+  background-color: #007bff;
+}
+#promocoes #v3 .destinoLoc {
+  grid-row: 1/-1;
+  grid-column: 3/6;
+  margin: 15px;
+  justify-content: center;
+  align-items: center;
+}
+#promocoes #v3 .preco {
+  grid-row: 1/-1;
+  grid-column: 6/8;
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+#promocoes #v3 .tipoVIagem {
+  grid-row: 1/-1;
+  grid-column: 8/10;
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+#promocoes #v3 .botao-promocao {
+  grid-row: 1/-1;
+  grid-column: 10/13;
+  margin: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+#promocoes #v4 {
+  grid-row: 8/10;
+  grid-column: 1/-1;
+  z-index: 1;
+  text-align: center;
+  justify-content: center;
+  border-bottom: 2px solid rgba(200, 200, 200, 0.5);
+}
+#promocoes #v4 .Aimg {
+  grid-row: 1/-1;
+  grid-column: 1/3;
+  margin: 15px;
+  background-color: #007bff;
+}
+#promocoes #v4 .destinoLoc {
+  grid-row: 1/-1;
+  grid-column: 3/6;
+  margin: 15px;
+  justify-content: center;
+  align-items: center;
+}
+#promocoes #v4 .preco {
+  grid-row: 1/-1;
+  grid-column: 6/8;
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+#promocoes #v4 .tipoVIagem {
+  grid-row: 1/-1;
+  grid-column: 8/10;
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+#promocoes #v4 .botao-promocao {
+  grid-row: 1/-1;
+  grid-column: 10/13;
+  margin: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+#promocoes #v5 {
+  grid-row: 10/12;
+  grid-column: 1/-1;
+  z-index: 1;
+  text-align: center;
+  justify-content: center;
+  border-bottom: 2px solid rgba(200, 200, 200, 0.5);
+}
+#promocoes #v5 .Aimg {
+  grid-row: 1/-1;
+  grid-column: 1/3;
+  margin: 15px;
+  background-color: #007bff;
+}
+#promocoes #v5 .destinoLoc {
+  grid-row: 1/-1;
+  grid-column: 3/6;
+  margin: 15px;
+  justify-content: center;
+  align-items: center;
+}
+#promocoes #v5 .preco {
+  grid-row: 1/-1;
+  grid-column: 6/8;
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+#promocoes #v5 .tipoVIagem {
+  grid-row: 1/-1;
+  grid-column: 8/10;
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+#promocoes #v5 .botao-promocao {
+  grid-row: 1/-1;
+  grid-column: 10/13;
+  margin: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+#promocoes #v6 {
+  grid-row: 12/14;
+  grid-column: 1/-1;
+  z-index: 1;
+  text-align: center;
+  justify-content: center;
+  border-bottom: 2px solid rgba(200, 200, 200, 0.5);
+}
+#promocoes #v6 .Aimg {
+  grid-row: 1/-1;
+  grid-column: 1/3;
+  margin: 15px;
+  background-color: #007bff;
+}
+#promocoes #v6 .destinoLoc {
+  grid-row: 1/-1;
+  grid-column: 3/6;
+  margin: 15px;
+  justify-content: center;
+  align-items: center;
+}
+#promocoes #v6 .preco {
+  grid-row: 1/-1;
+  grid-column: 6/8;
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+#promocoes #v6 .tipoVIagem {
+  grid-row: 1/-1;
+  grid-column: 8/10;
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+#promocoes #v6 .botao-promocao {
+  grid-row: 1/-1;
+  grid-column: 10/13;
+  margin: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.btn-SeccaoVoos {
+  text-decoration: none;
+  color: #000000;
+  font-size: 1.1rem;
+  font-weight: 200;
+  padding: 10px;
+  flex-grow: 1;
+  top: 1px;
+  /* Ajuste fino para sobreposição */
+}
+
+.btn-SeccaoVoos:hover {
+  color: rgb(102, 102, 102);
+}
+
+.btn-SeccaoVoos.clicado {
+  border-bottom: 2px solid rgb(0, 119, 205);
+  color: rgb(102, 102, 102);
+}
+
+#seccaoVoosButtonsDiv {
+  padding: 10px 0px;
+  font-size: 16px;
+  color: #333;
+  background-color: white;
+  border-bottom: 2px solid lightgray;
+  /* Borda padrão */
+  position: relative;
+  top: 2px;
+  /* Alinha com hover */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Estilos gerais para as caixas */
+.seccaoArtigos {
+  background-color: white;
+  /* Cor de fundo para as caixas */
+  overflow: hidden;
+  border-radius: 10px;
+  /* Arredondamento mais sutil e consistente */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  /* Sombra para dar destaque */
+  margin: 10px;
+  /* Espaço entre as caixas */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Efeito de hover */
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  /* Efeito de hover para dar mais destaque */
+}
+.seccaoArtigos:hover {
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+  /*Efeito de sobra sobre as caixas artigo 1 a artigo 4*/
+}
+
+#container3 {
+  display: grid;
+  /* ao usar substituir para "display grid"*/
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(auto-fill, 1fr);
+  height: auto;
+  width: 70vw;
+  margin: 5vw 15vw;
+  grid-row: 3/4;
+  gap: 1%;
+  background-color: transparent;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.Aimg {
+  grid-row: 1/9;
+  grid-column: 1/-1;
+  z-index: 3;
+  background-size: cover;
+  /* Ajusta a imagem para cobrir todo o contêiner */
+  background-position: center;
+  /* Centraliza a imagem */
+  background-repeat: no-repeat;
+  /* Impede repetição da imagem */
+  overflow: hidden;
+}
+
+#artImg1 {
+  background-image: url("imagens/artImg1.png");
+  /* Caminho da imagem */
+}
+
+#artImg2 {
+  background-image: url("imagens/artImg2.png");
+  /* Caminho da imagem */
+}
+
+#artImg3 {
+  background-image: url("imagens/artImg3.png");
+  /* Caminho da imagem */
+}
+
+#artImg4 {
+  background-image: url("imagens/artImg4.png");
+  /* Caminho da imagem */
+}
+
+.Aimg img {
+  position: relative;
+  background-size: cover;
+  /* Faz a imagem cobrir todo o fundo */
+  background-position: center;
+  /* Centraliza a imagem no fundo */
+  background-repeat: no-repeat;
+  /* Evita que a imagem se repita */
+}
+
+.artText {
+  grid-row: 9/13;
+  grid-column: 1/-1;
+  z-index: 2;
+  background-color: #ffffff;
+  /* Cor de fundo suave */
+  padding: 5px;
+  margin-left: 10px;
+  /* Margem à esquerda */
+  margin-right: 10px;
+  /* Margem à direita */
+  text-align: left;
+  /* Centraliza o texto */
+}
+
+.artText h4 {
+  font-size: 1.1rem;
+  /* Tamanho da fonte do título */
+  color: #333;
+  /* Cor do texto */
+  margin-bottom: 5px;
+  /* Reduz o espaço abaixo do título */
+}
+
+.artText p {
+  font-size: 0.8rem;
+  /* Tamanho da fonte do parágrafo */
+  color: #555;
+  /* Cor do texto */
+  margin-top: 0;
+  /* Remove a margem superior do parágrafo */
+}
+
+#container3 #title {
+  grid-row: 1;
+  grid-column: 1/12;
+}
+
+#art1 {
+  grid-row: 2/8;
+  /* Ocupa a primeira metade (50% da altura) */
+  grid-column: 1/9;
+  /* Primeira metade das colunas */
+  z-index: 1;
+}
+
+#art2 {
+  grid-row: 2/8;
+  /* Ocupa a primeira metade (50% da altura) */
+  grid-column: 9/13;
+  /* Segunda metade das colunas */
+  z-index: 1;
+}
+
+#art3 {
+  grid-row: 8/13;
+  /* Ocupa a segunda metade (50% da altura) */
+  grid-column: 1/5;
+  /* Primeira metade das colunas */
+  z-index: 1;
+}
+
+#art4 {
+  grid-row: 8/13;
+  /* Ocupa a segunda metade (50% da altura) */
+  grid-column: 5/13;
+  /* Segunda metade das colunas */
+  z-index: 1;
+}
+
+/*Destinos e ofertas css*/
+.caixa-promocao {
+  display: flex;
+  align-items: center;
+  margin-top: 0;
+  padding: 10px;
+}
+
+.imagem-promocao {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 15px;
+}
+
+.detalhes-promocao {
+  flex: 1;
+}
+
+.destino-promocao {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.pais-promocao {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.preco-promocao {
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+  margin: 5px 0;
+}
+
+.info-promocao {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.botao-promocao {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: transparent;
+  border: 2px solid #0073e6;
+  /* Borda azul de 2px */
+  color: #000;
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-left: 5px;
+  /* Margem ajustada para evitar excesso */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+  /* Inclui borda e padding no tamanho total */
+}
+
+.botao-promocao:hover {
+  background-color: rgba(0, 91, 181, 0.5);
+}
+
+#aeroportoText {
+  flex: 1;
+  display: inline-block;
+}
+
+#formAeroporto {
+  display: inline;
+  flex: 1;
+}
+
+#aeroporto {
+  border: none;
+  border-bottom: 2px solid #000;
+  /* Borda preta de 2px por baixo do select */
+  border-radius: 0;
+  padding: 0;
+  /* Remover qualquer espaçamento interno */
+  margin: 0;
+  /* Remover margens externas, se houver */
+  width: auto;
+  max-width: 30%;
+  height: 25px;
+  flex: 1;
+}
+
+#promo-alert {
+  grid-column: 1/-1;
+  font-weight: 100;
+  /* Fonte mais fina */
+  font-size: 0.8rem;
+  /* Tamanho pequeno */
+  opacity: 0.6;
+}
+
+#verMais {
+  grid-row: 14;
+  grid-column: 1/-1;
+  width: 25%;
+  font-size: 1em;
+  color: rgb(21, 92, 145);
+  font-weight: bold;
+}
+
+/*Css footer*/
+/* Estilos do Footer */
+.footer {
+  color: #bbb;
+  text-align: center;
+  position: relative;
+  font-size: 14px;
+  width: 100%;
+  grid-column: 1/-1;
+  grid-row: 10;
+  color: #00ff00;
+  text-decoration: none;
+  /*pendente de retirada o item abaixo => Pedro*/
+}
+.footer .footer-container {
+  background-color: rgb(246, 247, 248);
+  padding: 20px;
+  width: 90vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 0 auto;
+}
+.footer .footer-column {
+  text-align: left;
+  flex: 1 1 200px;
+  min-width: 200px;
+  /* Texto ao lado da imagem */
+}
+.footer .footer-column h4 {
+  font-size: 1em;
+  margin-bottom: 10px;
+  color: #072b45;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+}
+.footer .footer-column p,
+.footer .footer-column ul {
+  margin: 10px 0;
+}
+.footer .footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+.footer .footer-column ul li {
+  margin: 1px 0;
+}
+.footer .footer-column ul li a {
+  color: #3f4e58;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer .footer-column ul li a:hover {
+  color: black;
+}
+.footer .footer-column .download-buttons a span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #444;
+  text-align: left;
+  /* Garante alinhamento do texto à esquerda */
+}
+.footer .social-links {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.footer .social-links a {
+  display: inline-block;
+  margin: 0 10px;
+  font-size: 1.5em;
+  color: #bbb;
+  transition: color 0.3s;
+}
+.footer .social-links a:hover {
+  color: #00ff00;
+}
+.footer .centroFooter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+  margin-top: 20px;
+}
+.footer .centroFooter-item {
+  flex: 1 1 200px;
+  margin: 10px 0;
+}
+.footer .admin-link:hover {
+  background-color: #555;
+}
+
+/* Estilo da caixa do botão de download */
+.store-box {
+  display: flex;
+  /* Usa flexbox para alinhar imagem e texto lado a lado */
+  align-items: center;
+  /* Alinha verticalmente o conteúdo ao centro */
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #010101;
+  /* Cor de fundo */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Sombra leve */
+  width: auto;
+  /* Largura maior para acomodar o texto e imagem */
+  height: 60px;
+  margin: 10px;
+  text-align: left;
+  /* Garante alinhamento do texto à esquerda */
+  gap: 10px;
+  /* Espaço entre a imagem e o texto */
+}
+
+#appImg {
+  color: white;
+}
+
+#playImg {
+  color: white;
+}
+
+/* Estilo da imagem dentro do botão de download */
+.store-image {
+  width: 40px;
+  /* Ajuste o tamanho da imagem */
+  height: auto;
+  /* Mantém a proporção da imagem */
+  border-radius: 5px;
+  /* Bordas arredondadas */
+}
+
+/* Estilo geral para os links legais */
+.legal-links {
+  text-align: center;
+  /* Centraliza o conteúdo */
+  font-size: 0.9rem;
+  /* Tamanho do texto ajustado */
+  color: #666;
+  /* Cor do texto */
+  margin-top: 20px;
+}
+
+/* Estilo da lista */
+.legal-links ul {
+  list-style-type: none;
+  /* Remove bullets */
+  padding: 0;
+  margin: 0;
+  display: inline-flex;
+  /* Exibe os itens na mesma linha */
+  gap: 10px;
+  /* Espaçamento entre os itens */
+}
+
+.legal-links ul li {
+  display: inline;
+  /* Garante que os itens fiquem na mesma linha */
+  margin: 0;
+  padding: 0;
+}
+
+/* Adiciona o separador "|" entre os itens */
+.legal-links ul li:not(:last-child)::after {
+  content: " | ";
+  /* Adiciona o separador */
+  color: #666;
+  /* Cor do separador */
+}
+
+/* Estilo dos links */
+.legal-links a {
+  text-decoration: none;
+  /* Remove sublinhado */
+  color: #666;
+  /* Cor padrão dos links */
+  transition: color 0.3s ease;
+}
+
+/* Estilo do texto simples */
+.legal-links ul li {
+  color: #666;
+  /* Cor do texto padrão */
+  font-size: 0.9rem;
+}
+
+#resultado.active {
+  display: flex;
+  /* Torna o elemento flex */
+  flex-direction: column;
+  /* Itens dispostos verticalmente */
+  background-color: rgba(173, 216, 230, 0.5);
+  flex: 2;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+#resultado {
+  display: none;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  margin-top: 0;
+  height: auto;
+}
+
+.header-pesquisa {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+}
+
+.header-pesquisa p {
+  text-align: left;
+  font-size: 0.8em;
+}
+
+.resultadoVoo {
+  flex: 1;
+  /* Ocupa espaço proporcional */
+  z-index: 1;
+  /* Sobreposição */
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* 
+  Medidas a considerar para os media query 
+
+          Monitores grandes e portáteis grandes:
+
+          1200px ou mais.
+          Portáteis pequenos e tablets grandes:
+
+          Entre 992px e 1199px.
+          Tablets e telemóveis grandes:
+
+          Entre 768px e 991px.
+          Telemóveis pequenos:
+
+          Menores que 768px.
+  */
+/*Submenu criado em resoluço~es menores*/
+#sandwichMenu {
+  opacity: 0;
+  height: 0;
+  visibility: hidden;
+  /* Esconde visualmente */
+  overflow: hidden;
+  /* Evita que o conteúdo transborde */
+  transition: opacity 0.3s ease, height 0.3s ease;
+  width: 90vw;
+  margin: 0 auto;
+  /* Centraliza horizontalmente */
+}
+#sandwichMenu.active {
+  opacity: 1;
+  height: auto;
+  visibility: visible;
+  /* Torna visível */
+  grid-row: 2/3;
+  grid-column: 1/-1;
+  z-index: 2000;
+}
+
+.subMenuLogin {
+  position: fixed;
+  /* Ou fixed, dependendo do caso */
+  top: 50px;
+  /* Ajuste conforme necessário */
+  right: 0;
+  /* Se alinha à direita */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  width: auto;
+  z-index: 2000;
+  background-color: white;
+  border-radius: 0px 0px 5px 5px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-top: none;
+}
+.subMenuLogin.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.subMenuLinguas {
+  position: fixed;
+  /* Ou fixed, dependendo do caso */
+  top: 50px;
+  /* Ajuste conforme necessário */
+  right: 0;
+  /* Se alinha à direita */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  width: auto;
+  z-index: 2000;
+  background-color: white;
+  border-radius: 0px 0px 5px 5px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-top: none;
+  /* Estilo para o link desativado */
+  /* Estilo visual para links ativos */
+}
+.subMenuLinguas.active {
+  opacity: 1;
+  visibility: visible;
+}
+.subMenuLinguas .lingua-link.desactive {
+  pointer-events: none;
+  /* Impede qualquer interação com o item (clicar, arrastar, etc.) */
+  opacity: 0.5;
+  /* Torna o item visualmente desativado */
+  cursor: not-allowed;
+  /* Muda o cursor para indicar que o item está desativado */
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  /* Desativa a seleção de texto no item */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  /* Adiciona transições suaves */
+  display: none;
+}
+.subMenuLinguas .lingua-link {
+  transition: opacity 0.3s ease;
+  /* Transição suave para quando o link se torna ativo */
+}
+
+.container {
+  width: 70vw;
+  margin: 5vw 15vw;
+  text-align: center;
+}
+
+.container h1 {
+  font-size: 1.3em;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.service {
+  background: #ebf3f8;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: 1s;
+}
+
+.service:hover {
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+  transition: 1s;
+  /*Efeito de sobra sobre as caixas artigo 1 a artigo 4*/
+}
+
+.service img {
+  grid-column: 1/-1;
+  grid-row: 1/7;
+  max-width: 50%;
+}
+
+.service h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.service p {
+  font-size: 14px;
+  color: #555;
+}
+
+.discover-more {
+  margin-top: 20px;
+  display: flex;
+  justify-content: left;
+}
+
+#container7 {
+  display: grid; /* ao usar substituir para "display grid"*/
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(14, 1fr);
+  height: auto;
+  max-height: 100vh;
+  width: 70vw;
+  margin: 2.5vw 15vw;
+  padding: 1%;
+  grid-row: 3/4;
+  background-color: transparent;
+  box-sizing: border-box;
+  position: relative;
+}
+#container7 .discover-more {
+  grid-column: 1/-1;
+  grid-row: 13;
+  z-index: 9;
+}
+
+.seccaoC {
+  grid-row: 1/2; /* Ocupa a primeira metade (100% da altura) */
+  grid-column: 1/-1; /* Um quarto da coluna */
+  white-space: nowrap;
+  z-index: 1;
+}
+
+#ideia1 {
+  grid-row: 2/13; /* Ocupa a primeira metade (100% da altura) */
+  grid-column: 1/7; /* Um quarto da coluna */
+  z-index: 1;
+}
+#ideia1 .Aimg {
+  background-image: url("imagens/p1.jpeg");
+  background-size: cover;
+  /* Ajusta a imagem para cobrir todo o contêiner */
+  background-position: center;
+  /* Centraliza a imagem */
+  background-repeat: no-repeat;
+  /* Impede repetição da imagem */
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+}
+#ideia1 .artP {
+  grid-column: 1/-1;
+  grid-row: 10/11;
+  color: white;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(auto-fill, 1fr);
+  gap: 5px;
+}
+#ideia1 .artP h4 {
+  grid-row: 1;
+  grid-column: 1/-1;
+  font-size: 1.1em;
+  text-align: center;
+}
+#ideia1 .artP p {
+  grid-row: 1;
+  grid-column: 1/-1;
+  font-size: 1.1em;
+  text-align: center;
+  transform: translatey(30px);
+}
+
+#ideia2 {
+  grid-row: 2/8; /* Ocupa a primeira metade (100% da altura) */
+  grid-column: 7/13; /* Um quarto da coluna */
+  z-index: 1;
+  background-color: pink;
+}
+#ideia2 .Aimg {
+  background-image: url("imagens/p2.jpg");
+  background-size: cover;
+  /* Ajusta a imagem para cobrir todo o contêiner */
+  background-position: center;
+  /* Centraliza a imagem */
+  background-repeat: no-repeat;
+  /* Impede repetição da imagem */
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+}
+#ideia2 .artP {
+  grid-column: 1/-1;
+  grid-row: 10/11;
+  color: white;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(auto-fill, 1fr);
+  gap: 5px;
+}
+#ideia2 .artP h4 {
+  grid-row: 1;
+  grid-column: 1/-1;
+  font-size: 1.1em;
+  text-align: center;
+}
+#ideia2 .artP p {
+  grid-row: 1;
+  grid-column: 1/-1;
+  font-size: 1.1em;
+  text-align: center;
+  transform: translatey(30px);
+}
+
+#ideia3 {
+  grid-row: 8/13; /* Ocupa a segunda metade (100% da altura) */
+  grid-column: 7/10; /* Um quarto da coluna */
+  z-index: 1;
+  background-color: #00ff00;
+}
+#ideia3 .Aimg {
+  background-image: url("imagens/p3.jpeg");
+  background-size: cover;
+  /* Ajusta a imagem para cobrir todo o contêiner */
+  background-position: center;
+  /* Centraliza a imagem */
+  background-repeat: no-repeat;
+  /* Impede repetição da imagem */
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+}
+#ideia3 .artP {
+  grid-column: 1/-1;
+  grid-row: 10/11;
+  color: white;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(auto-fill, 1fr);
+  gap: 5px;
+}
+#ideia3 .artP h4 {
+  grid-row: 1;
+  grid-column: 1/-1;
+  font-size: 1.1em;
+  text-align: center;
+}
+#ideia3 .artP p {
+  grid-row: 1;
+  grid-column: 1/-1;
+  font-size: 1.1em;
+  text-align: center;
+  transform: translatey(30px);
+}
+
+#ideia4 {
+  grid-row: 8/13; /* Ocupa a segunda metade (50% da altura) */
+  grid-column: 10/13; /* Segunda metade das colunas */
+  background-color: #0073e6;
+  z-index: 1;
+}
+#ideia4 .Aimg {
+  background-image: url("imagens/p4.jpg");
+  background-size: cover;
+  /* Ajusta a imagem para cobrir todo o contêiner */
+  background-position: center;
+  /* Centraliza a imagem */
+  background-repeat: no-repeat;
+  /* Impede repetição da imagem */
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+}
+#ideia4 .artP {
+  grid-column: 1/-1;
+  grid-row: 10/11;
+  color: white;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(auto-fill, 1fr);
+  gap: 5px;
+}
+#ideia4 .artP h4 {
+  grid-row: 1;
+  grid-column: 1/-1;
+  font-size: 1.1em;
+  text-align: center;
+}
+#ideia4 .artP p {
+  grid-row: 1;
+  grid-column: 1/-1;
+  font-size: 1.1em;
+  text-align: center;
+  transform: translatey(30px);
+}
+
+#container5 {
+  display: grid; /* ao usar substituir para "display grid"*/
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  height: auto;
+  width: 80vw;
+  margin: 5vw 10vw;
+  padding: 1%;
+  grid-row: 3/4;
+  gap: 1%;
+  background-color: transparent;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.seccaoP {
+  background-color: transparent;
+  /* Cor de fundo para as caixas */
+  overflow: hidden;
+  border-radius: 10px;
+  /* Arredondamento mais sutil e consistente */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  /* Espaço entre as caixas */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Efeito de hover */
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  transition: 0.5s;
+}
+.seccaoP .Aimg {
+  transition: 0.5s;
+}
+.seccaoP .artP {
+  transition: 0.5s;
+}
+
+.seccaoP:hover {
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+  transition: 0.5s;
+  /*Efeito de sobra sobre as caixas artigo 1 a artigo 4*/
+}
+.seccaoP:hover .Aimg {
+  transform: scale(1.2);
+  transition: 0.5s;
+}
+.seccaoP:hover .artP {
+  margin-bottom: 10px;
+  padding: 0px 0px 10px 0px;
+  transition: 0.5s;
+}
+
+#container6 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  background-color: #ffffff;
+  width: 70vw;
+  margin: 5vw 15vw;
+}
+
+.seccaoF {
+  grid-column: 1/12;
+  grid-row: 1/-1;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.artF {
+  grid-column: 1/11;
+}
+
+.artF h4 {
+  font-size: 1.5em;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.artF p {
+  font-size: 0.8rem;
+  color: #666666;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.seccaoF #buttonContainer {
+  grid-column: 11/14;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Alinhamento horizontal */
+  align-items: center; /* Alinhamento vertical */
+}
+
+.seccaoF button {
+  background-color: transparent;
+  color: #0e578c;
+  font-size: 1rem;
+  padding: 10px 10px;
+  height: auto;
+  width: auto;
+  border: 2px solid #0e578c;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.seccaoF button:hover {
+  background-color: #ebf5fb;
+}
+
+/* Contêiner do formulário */
+.container-formulario {
+  grid-column: 2/12;
+  grid-row: 8;
+  z-index: 4;
+  display: flex;
+  background-color: white;
+  padding: 20px;
+  border-radius: 0px 8px 8px 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  /* Permite que os itens se ajustem à próxima linha */
+  height: auto;
+  /* Ajusta a altura automaticamente com base no conteúdo */
+  flex-grow: 1;
+  /* Permite que o contêiner cresça se necessário */
+  overflow: hidden;
+  /* Evita que o conteúdo transborde */
+}
+
+.grupo-formulario:nth-child(1) {
+  flex: 1;
+  /* Todos com tamanho de 1 vez */
+  flex-grow: 1;
+}
+
+.grupo-formulario:nth-child(2),
+.grupo-formulario:nth-child(3) {
+  flex: 2;
+  /* Todos com tamanho de 2 vezes */
+  flex-grow: 2;
+}
+
+.input-com-imagem-1 {
+  background-image: url("imagens/aviao1.png");
+  background-repeat: no-repeat;
+  background-position: 10px center; /* Alinha a imagem dentro do input */
+  background-size: 20px 20px; /* Tamanho da imagem */
+  text-indent: 30px; /* Move o texto do placeholder */
+}
+
+.input-com-imagem-2 {
+  background-image: url("imagens/aviao2.png");
+  background-repeat: no-repeat;
+  background-position: 10px center; /* Alinha a imagem dentro do input */
+  background-size: 20px 20px; /* Tamanho da imagem */
+  text-indent: 30px; /* Move o texto do placeholder */
+}
+
+/* Contêiner das abas */
+.abas-container {
+  grid-column: 2/7;
+  grid-row: 7;
+  display: flex;
+  z-index: 3;
+  height: 70%;
+  align-self: end;
+  /* Alinha ao fundo da linha */
+}
+
+#reservaVoo {
+  background-image: url("imagens/aviaoSemBarraAtiva.png");
+  background-repeat: no-repeat;
+  background-position: 10px center; /* Alinha a imagem dentro do input */
+  background-size: 30px 20px; /* Tamanho da imagem */
+  text-indent: 30px; /* Move o texto do placeholder */
+}
+
+#reservaVoo.ativa {
+  background-image: url("imagens/aviaoSemBarra.png");
+  background-repeat: no-repeat;
+  background-position: 10px center; /* Alinha a imagem dentro do input */
+  background-size: 30px 20px; /* Tamanho da imagem */
+  text-indent: 30px; /* Move o texto do placeholder */
+}
+
+#reservaMilhas {
+  background-image: url("imagens/reservaMilhasIconWhite.png");
+  background-repeat: no-repeat;
+  background-position: 10px center; /* Alinha a imagem dentro do input */
+  background-size: 40px 30px; /* Tamanho da imagem */
+  text-indent: 30px; /* Move o texto do placeholder */
+}
+
+#reservaMilhas.ativa {
+  background-image: url("imagens/reservaMilhasIconBlack.png");
+  background-repeat: no-repeat;
+  background-position: 10px center; /* Alinha a imagem dentro do input */
+  background-size: 40px 30px; /* Tamanho da imagem */
+  text-indent: 30px; /* Move o texto do placeholder */
+}
+
+#estadoVoos {
+  background-image: url("imagens/aviaoSemBarraAtiva.png");
+  background-repeat: no-repeat;
+  background-position: 10px center; /* Alinha a imagem dentro do input */
+  background-size: 30px 20px; /* Tamanho da imagem */
+  text-indent: 30px; /* Move o texto do placeholder */
+}
+
+#estadoVoos.ativa {
+  background-image: url("imagens/aviaoSemBarra.png");
+  background-repeat: no-repeat;
+  background-position: 10px center; /* Alinha a imagem dentro do input */
+  background-size: 30px 20px; /* Tamanho da imagem */
+  text-indent: 30px; /* Move o texto do placeholder */
+}
+
+.aba {
+  display: flex;
+  /* Ativa o flexbox */
+  justify-content: center;
+  /* Centraliza o conteúdo horizontalmente */
+  align-items: center;
+  /* Centraliza o conteúdo verticalmente */
+  text-align: center;
+  margin-right: 20px;
+  padding: 1px 15px;
+  /* Pode ser ajustado, mas evite valores grandes */
+  cursor: pointer;
+  border-radius: 1px 1px 0px 0px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: rgb(7, 43, 69);
+  /* Valor corrigido para consistência */
+  margin-bottom: -5px;
+  padding: 0 20px;
+  /* Espaçamento horizontal ajustado */
+  line-height: 20px;
+  /* Controla a altura do texto */
+  height: 100%;
+  /* Altura fixa */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  white-space: nowrap;
+}
+
+/* Aba ativa */
+.aba.ativa {
+  background-color: white;
+  /* Cor de destaque */
+  color: #555;
+  border-color: #007BFF;
+}
+
+/* Ícone dentro da aba */
+.icone-aba {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+/* Estilo do formulário */
+.formulario-voo {
+  display: flex;
+  height: auto;
+  flex-wrap: wrap;
+  /* Faz com que os itens se movam para a linha seguinte quando necessário */
+  width: 85vw;
+  gap: 15px;
+  /* Espaço entre os itens */
+  align-items: center;
+}
+
+.formInferior {
+  display: none;
+}
+
+.formInferior.active {
+  display: flex;
+}
+
+#containerFrmInferior {
+  display: none;
+}
+
+#containerFrmInferior.active {
+  display: inherit;
+  /* Herda o comportamento flex do pai */
+}
+
+/* Grupo do formulário */
+.grupo-formulario {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+input,
+select {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 10px 0;
+  width: 100%;
+  height: 60px;
+  box-sizing: border-box;
+}
+
+input:focus,
+select:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+#tipo-viagem {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 10px 0;
+  width: 100%;
+  height: 60px;
+  box-sizing: border-box;
+}
+
+/*button submit*/
+.btn-pesquisaVoos, .btn-pesquisaVoos-1 {
+  padding: 10px 20px;
+  font-size: 18px;
+  flex: 0.5;
+  /*O botão de pesquisa de voos pode tomar metade do espaço disponivel*/
+  align-self: end;
+  color: #175d92;
+  background-color: #2596be;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: white;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn-pesquisaVoos:hover, .btn-pesquisaVoos-1:hover {
+  background-color: #298dd5;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
+  /*Uso rgb aqui para deixar uma aparencia mais de gradiente*/
+}
+
+/* Botão Continuar */
+.botao-continuar, .botao-continuar-EV {
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #175d92;
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.botao-continuar:hover, .botao-continuar-EV:hover {
+  background-color: rgb(235, 245, 251);
+}
+
+.botao-continuar span, .botao-continuar-EV span {
+  font-size: 12px;
+}
+
+/* chackbox deslisante do formulario de voos */
+/* Contêiner do switch */
+.switch-container {
+  display: inline-block;
+  position: relative;
+}
+
+/* Esconde o checkbox real */
+.toggle-checkbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Estilo do rótulo, que será o fundo do botão deslizante */
+.toggle-label {
+  width: 40px;
+  height: 6px;
+  background-color: #ccc;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Círculo que desliza */
+.toggle-label:before {
+  content: "";
+  width: 26px;
+  height: 26px;
+  background-color: rgb(63, 59, 59);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  transform: translateX(-7px);
+}
+
+/* Estilo quando o botão está ativado (checkbox marcado) */
+.toggle-checkbox:checked + .toggle-label {
+  background-color: rgb(194, 219, 234);
+  /* Cor azul quando ativado */
+}
+
+.toggle-checkbox:checked + .toggle-label:before {
+  background-color: rgb(7, 43, 69);
+  /* muda a cor da bola do button para azul escuro*/
+  transform: translateX(27px);
+  /* Move o círculo para a direita */
+}
+
+/*css segunda aba forms*/
+#segunda-aba.active {
+  grid-column: 2/12;
+  grid-row: 8;
+  z-index: 4;
+  display: flex;
+  background-color: white;
+  padding: 20px;
+  border-radius: 0px 8px 8px 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  /* Permite que os itens se ajustem à próxima linha */
+  height: auto;
+  /* Ajusta a altura automaticamente com base no conteúdo */
+  flex-grow: 1;
+  /* Permite que o contêiner cresça se necessário */
+  overflow: hidden;
+  /* Evita que o conteúdo transborde */
+  align-items: center;
+  background: #ffffff;
+  padding: 20px 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#segunda-aba {
+  display: none;
+}
+
+#terceira-aba.active {
+  grid-column: 2/12;
+  grid-row: 8;
+  z-index: 5;
+  display: flex;
+  background-color: white;
+  padding: 20px;
+  border-radius: 0px 8px 8px 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  /* Permite que os itens se ajustem à próxima linha */
+  height: auto;
+  /* Ajusta a altura automaticamente com base no conteúdo */
+  flex-grow: 1;
+  /* Permite que o contêiner cresça se necessário */
+  overflow: hidden;
+  /* Evita que o conteúdo transborde */
+  align-items: center;
+  background: #ffffff;
+  padding: 20px 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#terceira-aba {
+  display: none;
+}
+
+#primeira-aba.active {
+  grid-column: 2/12;
+  grid-row: 8;
+  z-index: 5;
+  display: flex;
+  background-color: white;
+  padding: 20px;
+  border-radius: 0px 8px 8px 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  /* Permite que os itens se ajustem à próxima linha */
+  height: auto;
+  /* Ajusta a altura automaticamente com base no conteúdo */
+  flex-grow: 1;
+  /* Permite que o contêiner cresça se necessário */
+  overflow: hidden;
+  /* Evita que o conteúdo transborde */
+  align-items: center;
+  background: #ffffff;
+  padding: 20px 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#primeira-aba {
+  display: none;
+}
+
+.logo img {
+  height: 50px;
+  margin-right: 20px;
+}
+
+.info {
+  flex-grow: 1;
+  margin-right: 20px;
+}
+
+.info h1 {
+  font-size: 18px;
+  margin: 0;
+  color: #002D62;
+}
+
+.info p {
+  font-size: 14px;
+  margin: 5px 0 0;
+  color: #555555;
+}
+
+.button-container {
+  flex-shrink: 1;
+}
+
+.login-button {
+  background-color: #d0e7f9;
+  color: #002D62;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #b3d8f1;
+}
+
+@media screen and (max-width: 768px) {
+  /* Contêiner do formulário */
+  .container-formulario {
+    grid-column: 1/-1;
+    grid-row: 10;
+    z-index: 4;
+    display: flex;
+    background-color: white;
+    padding: 20px;
+    justify-content: center;
+    border-radius: 0px 8px 8px 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    /* Permite que os itens se ajustem à próxima linha */
+    height: auto;
+    /* Ajusta a altura automaticamente com base no conteúdo */
+    flex-grow: 1;
+    /* Permite que o contêiner cresça se necessário */
+    overflow: hidden;
+    /* Evita que o conteúdo transborde */
+  }
+  /* Estilo do formulário */
+  .formulario-voo {
+    flex-direction: column;
+  }
+  .grupo-formulario:nth-child(1) {
+    flex: 1;
+    /* Todos com tamanho de 1 vez */
+    flex-grow: 1;
+    min-width: 100%;
+  }
+  .grupo-formulario:nth-child(2),
+  .grupo-formulario:nth-child(3) {
+    flex: 1;
+    /* Todos com tamanho de 2 vezes */
+    flex-grow: 1;
+    min-width: 100%;
+  }
+  #terceira-aba.active, #segunda-aba.active, #primeira-aba.active {
+    border-radius: 0px 0px 8px 8px;
+  }
+  .abas-container {
+    grid-row: 7;
+    display: flex;
+    z-index: 3;
+    flex-direction: column;
+    align-self: end;
+    grid-column: 2/12;
+    z-index: 5;
+    display: flex;
+    background-color: white;
+    flex-wrap: wrap;
+    /* Permite que os itens se ajustem à próxima linha */
+    height: auto;
+    /* Ajusta a altura automaticamente com base no conteúdo */
+    flex-grow: 1;
+    /* Permite que o contêiner cresça se necessário */
+    overflow: hidden;
+    /* Evita que o conteúdo transborde */
+    align-items: center;
+    /* Alinha ao fundo da linha */
+  }
+  .aba {
+    width: 100%;
+    padding: 20px 0px;
+  }
+  .login-button {
+    background-color: #d0e7f9;
+    color: #002D62;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 11px;
+    cursor: pointer;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+  }
+}
+@media screen and (max-width: 1200px) and (min-width: 768px) {
+  #container3 {
+    display: grid;
+  }
+  .placar {
+    overflow: visible;
+    grid-row: 4/8;
+    grid-column: 2/11;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background: rgb(7, 43, 69);
+    /* Fundo translúcido */
+    opacity: 0.8;
+    color: white;
+    border-radius: 5px;
+    /* Bordas arredondadas */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Sombra */
+    z-index: -1;
+  }
+  /*artigos*/
+  #art1 {
+    grid-row: 2/13;
+    grid-column: 1/4;
+    z-index: 1;
+  }
+  #art2 {
+    grid-row: 2/13;
+    grid-column: 4/7;
+    z-index: 1;
+  }
+  #art3 {
+    grid-row: 2/13;
+    grid-column: 7/10;
+    z-index: 1;
+  }
+  #art4 {
+    grid-row: 2/13;
+    grid-column: 10/13;
+    z-index: 1;
+  }
+  #art5 {
+    grid-row: 2/13;
+    grid-column: 13/16;
+    z-index: 1;
+  }
+  .seccaoVoos {
+    background-color: white;
+    /* Cor de fundo para as caixas */
+    overflow: hidden;
+    border-radius: 10px;
+    /* Arredondamento mais sutil e consistente */
+    /* Sombra para dar destaque */
+    margin: 10px;
+    /* Espaço entre as caixas */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Efeito de hover */
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    /* Efeito de hover para dar mais destaque */
+  }
+  .seccaoVoos:hover {
+    background-color: inherit; /* Remove a cor de fundo */
+    padding: 0px; /* Remove o padding adicional */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    /*Efeito de sobra sobre as caixas artigo 1 a artigo 4*/
+  }
+  #info {
+    display: none;
+  }
+  #promocoes {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Divisão proporcional em 12 colunas */
+    grid-template-rows: repeat(auto-fill, 1fr);
+    /*Destinos e ofertas*/
+    /* Divisão proporcional em 12 linhas */
+  }
+  #promocoes .destino-promocao {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  #promocoes .pais-promocao {
+    font-size: 0.7rem;
+    color: #666;
+  }
+  #promocoes .preco-promocao {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: black;
+    margin: 5px 0;
+  }
+  #promocoes .info-promocao {
+    font-size: 0.7rem;
+    color: #444;
+  }
+  #promocoes #v1 {
+    border: 2px solid #0073e6;
+  }
+  #promocoes #v2 {
+    border: 2px solid #0073e6;
+  }
+  #promocoes #v3 {
+    border: 2px solid #0073e6;
+  }
+  #promocoes #v4 {
+    border: 2px solid #0073e6;
+  }
+  #promocoes #v5 {
+    border: 2px solid #0073e6;
+  }
+  #promocoes #v6 {
+    border: 2px solid #0073e6;
+  }
+  #promocoes #v1.seccaoVoos.active {
+    grid-row: 2/6;
+    grid-column: 1/7;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+  }
+  #promocoes #v1.seccaoVoos.active .Aimg {
+    grid-row: 1/6;
+    /* Primeira linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    margin: 0px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  #promocoes #v1.seccaoVoos.active .destinoLoc {
+    grid-row: 6/7;
+    /* Segunda linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v1.seccaoVoos.active .preco {
+    grid-row: 7/8;
+    /* Terceira linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v1.seccaoVoos.active .tipoVIagem {
+    grid-row: 9/10;
+    /* Quarta linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v1.seccaoVoos.active .botao-promocao {
+    grid-row: 10;
+    /* Quinta linha */
+    border: none;
+    border-top: 2px solid #0073e6;
+    border-radius: 0px 0px 10px 10px;
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    z-index: 2;
+    height: auto;
+    margin-bottom: -1px;
+  }
+  #promocoes #v2.seccaoVoos.active {
+    grid-row: 2/6;
+    grid-column: 1/7;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+  }
+  #promocoes #v2.seccaoVoos.active .Aimg {
+    grid-row: 1/6;
+    /* Primeira linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    margin: 0px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  #promocoes #v2.seccaoVoos.active .destinoLoc {
+    grid-row: 6/7;
+    /* Segunda linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v2.seccaoVoos.active .preco {
+    grid-row: 7/8;
+    /* Terceira linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v2.seccaoVoos.active .tipoVIagem {
+    grid-row: 9/10;
+    /* Quarta linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v2.seccaoVoos.active .botao-promocao {
+    grid-row: 10;
+    /* Quinta linha */
+    border: none;
+    border-top: 2px solid #0073e6;
+    border-radius: 0px 0px 10px 10px;
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    z-index: 2;
+    height: auto;
+    margin-bottom: -1px;
+  }
+  #promocoes #v3.seccaoVoos.active {
+    grid-row: 2/6;
+    grid-column: 1/7;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+  }
+  #promocoes #v3.seccaoVoos.active .Aimg {
+    grid-row: 1/6;
+    /* Primeira linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    margin: 0px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  #promocoes #v3.seccaoVoos.active .destinoLoc {
+    grid-row: 6/7;
+    /* Segunda linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v3.seccaoVoos.active .preco {
+    grid-row: 7/8;
+    /* Terceira linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v3.seccaoVoos.active .tipoVIagem {
+    grid-row: 9/10;
+    /* Quarta linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v3.seccaoVoos.active .botao-promocao {
+    grid-row: 10;
+    /* Quinta linha */
+    border: none;
+    border-top: 2px solid #0073e6;
+    border-radius: 0px 0px 10px 10px;
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    z-index: 2;
+    height: auto;
+    margin-bottom: -1px;
+  }
+  #promocoes #v4.seccaoVoos.active {
+    grid-row: 2/6;
+    grid-column: 1/7;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+  }
+  #promocoes #v4.seccaoVoos.active .Aimg {
+    grid-row: 1/6;
+    /* Primeira linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    margin: 0px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  #promocoes #v4.seccaoVoos.active .destinoLoc {
+    grid-row: 6/7;
+    /* Segunda linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v4.seccaoVoos.active .preco {
+    grid-row: 7/8;
+    /* Terceira linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v4.seccaoVoos.active .tipoVIagem {
+    grid-row: 9/10;
+    /* Quarta linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v4.seccaoVoos.active .botao-promocao {
+    grid-row: 10;
+    /* Quinta linha */
+    border: none;
+    border-top: 2px solid #0073e6;
+    border-radius: 0px 0px 10px 10px;
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    z-index: 2;
+    height: auto;
+    margin-bottom: -1px;
+  }
+  #promocoes #v5.seccaoVoos.active {
+    grid-row: 2/6;
+    grid-column: 1/7;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+  }
+  #promocoes #v5.seccaoVoos.active .Aimg {
+    grid-row: 1/6;
+    /* Primeira linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    margin: 0px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  #promocoes #v5.seccaoVoos.active .destinoLoc {
+    grid-row: 6/7;
+    /* Segunda linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v5.seccaoVoos.active .preco {
+    grid-row: 7/8;
+    /* Terceira linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v5.seccaoVoos.active .tipoVIagem {
+    grid-row: 9/10;
+    /* Quarta linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v5.seccaoVoos.active .botao-promocao {
+    grid-row: 10;
+    /* Quinta linha */
+    border: none;
+    border-top: 2px solid #0073e6;
+    border-radius: 0px 0px 10px 10px;
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    z-index: 2;
+    height: auto;
+    margin-bottom: -1px;
+  }
+  #promocoes #v6.seccaoVoos.active {
+    grid-row: 2/6;
+    grid-column: 1/7;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+  }
+  #promocoes #v6.seccaoVoos.active .Aimg {
+    grid-row: 1/6;
+    /* Primeira linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    margin: 0px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  #promocoes #v6.seccaoVoos.active .destinoLoc {
+    grid-row: 6/7;
+    /* Segunda linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v6.seccaoVoos.active .preco {
+    grid-row: 7/8;
+    /* Terceira linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v6.seccaoVoos.active .tipoVIagem {
+    grid-row: 9/10;
+    /* Quarta linha */
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v6.seccaoVoos.active .botao-promocao {
+    grid-row: 10;
+    /* Quinta linha */
+    border: none;
+    border-top: 2px solid #0073e6;
+    border-radius: 0px 0px 10px 10px;
+    grid-column: 1/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    z-index: 2;
+    height: auto;
+    margin-bottom: -1px;
+  }
+  #promocoes #v1.defaultTop-2 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+    grid-row: 2/3;
+    grid-column: 7/13;
+    z-index: 1;
+    text-align: center;
+    overflow-y: show;
+    justify-content: center;
+  }
+  #promocoes #v1.defaultTop-2 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/5;
+    /* Ocupa ambas as colunas */
+    margin: 0px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  #promocoes #v1.defaultTop-2 .destinoLoc {
+    grid-row: 2/3;
+    /* Segunda linha */
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v1.defaultTop-2 .preco {
+    grid-row: 3/5;
+    /* Terceira linha */
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v1.defaultTop-2 .tipoVIagem {
+    grid-row: 5/6;
+    /* Quarta linha */
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v1.defaultTop-2 .botao-promocao {
+    grid-row: 10;
+    /* Quinta linha */
+    border: none;
+    border-top: 2px solid #0073e6;
+    border-radius: 0px 0px 10px 0px;
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    /* Remove margens externas */
+    z-index: 2;
+    height: auto;
+    margin-bottom: -1px;
+    /* Ajuste negativo para alinhamento */
+    box-sizing: border-box;
+    /* Garante que borda e padding estejam dentro do tamanho do elemento */
+    overflow: hidden;
+    /* Evita que o conteúdo ou bordas extravasem o container */
+  }
+  #promocoes #v2.defaultTop-2 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+    grid-row: 2/3;
+    grid-column: 7/13;
+    z-index: 1;
+    text-align: center;
+    overflow-y: show;
+    justify-content: center;
+  }
+  #promocoes #v2.defaultTop-2 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/5;
+    /* Ocupa ambas as colunas */
+    margin: 0px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  #promocoes #v2.defaultTop-2 .destinoLoc {
+    grid-row: 2/3;
+    /* Segunda linha */
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v2.defaultTop-2 .preco {
+    grid-row: 3/5;
+    /* Terceira linha */
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v2.defaultTop-2 .tipoVIagem {
+    grid-row: 5/6;
+    /* Quarta linha */
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v2.defaultTop-2 .botao-promocao {
+    grid-row: 10;
+    /* Quinta linha */
+    border: none;
+    border-top: 2px solid #0073e6;
+    border-radius: 0px 0px 10px 0px;
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    /* Remove margens externas */
+    z-index: 2;
+    height: auto;
+    margin-bottom: -1px;
+    /* Ajuste negativo para alinhamento */
+    box-sizing: border-box;
+    /* Garante que borda e padding estejam dentro do tamanho do elemento */
+    overflow: hidden;
+    /* Evita que o conteúdo ou bordas extravasem o container */
+  }
+  #promocoes #v3.defaultTop-2 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+    grid-row: 2/3;
+    grid-column: 7/13;
+    z-index: 1;
+    text-align: center;
+    overflow-y: show;
+    justify-content: center;
+  }
+  #promocoes #v3.defaultTop-2 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/5;
+    /* Ocupa ambas as colunas */
+    margin: 0px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  #promocoes #v3.defaultTop-2 .destinoLoc {
+    grid-row: 2/3;
+    /* Segunda linha */
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v3.defaultTop-2 .preco {
+    grid-row: 3/5;
+    /* Terceira linha */
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v3.defaultTop-2 .tipoVIagem {
+    grid-row: 5/6;
+    /* Quarta linha */
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v3.defaultTop-2 .botao-promocao {
+    grid-row: 10;
+    /* Quinta linha */
+    border: none;
+    border-top: 2px solid #0073e6;
+    border-radius: 0px 0px 10px 0px;
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    /* Remove margens externas */
+    z-index: 2;
+    height: auto;
+    margin-bottom: -1px;
+    /* Ajuste negativo para alinhamento */
+    box-sizing: border-box;
+    /* Garante que borda e padding estejam dentro do tamanho do elemento */
+    overflow: hidden;
+    /* Evita que o conteúdo ou bordas extravasem o container */
+  }
+  #promocoes #v4.defaultTop-2 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+    grid-row: 2/3;
+    grid-column: 7/13;
+    z-index: 1;
+    text-align: center;
+    overflow-y: show;
+    justify-content: center;
+  }
+  #promocoes #v4.defaultTop-2 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/5;
+    /* Ocupa ambas as colunas */
+    margin: 0px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  #promocoes #v4.defaultTop-2 .destinoLoc {
+    grid-row: 2/3;
+    /* Segunda linha */
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v4.defaultTop-2 .preco {
+    grid-row: 3/5;
+    /* Terceira linha */
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v4.defaultTop-2 .tipoVIagem {
+    grid-row: 5/6;
+    /* Quarta linha */
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v4.defaultTop-2 .botao-promocao {
+    grid-row: 10;
+    /* Quinta linha */
+    border: none;
+    border-top: 2px solid #0073e6;
+    border-radius: 0px 0px 10px 0px;
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    /* Remove margens externas */
+    z-index: 2;
+    height: auto;
+    margin-bottom: -1px;
+    /* Ajuste negativo para alinhamento */
+    box-sizing: border-box;
+    /* Garante que borda e padding estejam dentro do tamanho do elemento */
+    overflow: hidden;
+    /* Evita que o conteúdo ou bordas extravasem o container */
+  }
+  #promocoes #v5.defaultTop-2 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+    grid-row: 2/3;
+    grid-column: 7/13;
+    z-index: 1;
+    text-align: center;
+    overflow-y: show;
+    justify-content: center;
+  }
+  #promocoes #v5.defaultTop-2 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/5;
+    /* Ocupa ambas as colunas */
+    margin: 0px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  #promocoes #v5.defaultTop-2 .destinoLoc {
+    grid-row: 2/3;
+    /* Segunda linha */
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v5.defaultTop-2 .preco {
+    grid-row: 3/5;
+    /* Terceira linha */
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v5.defaultTop-2 .tipoVIagem {
+    grid-row: 5/6;
+    /* Quarta linha */
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v5.defaultTop-2 .botao-promocao {
+    grid-row: 10;
+    /* Quinta linha */
+    border: none;
+    border-top: 2px solid #0073e6;
+    border-radius: 0px 0px 10px 0px;
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    /* Remove margens externas */
+    z-index: 2;
+    height: auto;
+    margin-bottom: -1px;
+    /* Ajuste negativo para alinhamento */
+    box-sizing: border-box;
+    /* Garante que borda e padding estejam dentro do tamanho do elemento */
+    overflow: hidden;
+    /* Evita que o conteúdo ou bordas extravasem o container */
+  }
+  #promocoes #v6.defaultTop-2 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+    grid-row: 2/3;
+    grid-column: 7/13;
+    z-index: 1;
+    text-align: center;
+    overflow-y: show;
+    justify-content: center;
+  }
+  #promocoes #v6.defaultTop-2 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/5;
+    /* Ocupa ambas as colunas */
+    margin: 0px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  #promocoes #v6.defaultTop-2 .destinoLoc {
+    grid-row: 2/3;
+    /* Segunda linha */
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v6.defaultTop-2 .preco {
+    grid-row: 3/5;
+    /* Terceira linha */
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v6.defaultTop-2 .tipoVIagem {
+    grid-row: 5/6;
+    /* Quarta linha */
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v6.defaultTop-2 .botao-promocao {
+    grid-row: 10;
+    /* Quinta linha */
+    border: none;
+    border-top: 2px solid #0073e6;
+    border-radius: 0px 0px 10px 0px;
+    grid-column: 5/-1;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    /* Remove margens externas */
+    z-index: 2;
+    height: auto;
+    margin-bottom: -1px;
+    /* Ajuste negativo para alinhamento */
+    box-sizing: border-box;
+    /* Garante que borda e padding estejam dentro do tamanho do elemento */
+    overflow: hidden;
+    /* Evita que o conteúdo ou bordas extravasem o container */
+  }
+  #promocoes #v1.defaultTop-3 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+    grid-row: 3/6;
+    grid-column: 7/13;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v1.defaultTop-3 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    margin: 0px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  #promocoes #v1.defaultTop-3 .destinoLoc {
+    grid-row: 2/3;
+    /* Segunda linha */
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v1.defaultTop-3 .preco {
+    grid-row: 3/5;
+    /* Terceira linha */
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v1.defaultTop-3 .tipoVIagem {
+    grid-row: 5/6;
+    /* Quarta linha */
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v1.defaultTop-3 .botao-promocao {
+    grid-row: 10;
+    /* Quinta linha */
+    border: none;
+    border-top: 2px solid #0073e6;
+    border-radius: 0px 0px 0px 10px;
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v2.defaultTop-3 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+    grid-row: 3/6;
+    grid-column: 7/13;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v2.defaultTop-3 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    margin: 0px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  #promocoes #v2.defaultTop-3 .destinoLoc {
+    grid-row: 2/3;
+    /* Segunda linha */
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v2.defaultTop-3 .preco {
+    grid-row: 3/5;
+    /* Terceira linha */
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v2.defaultTop-3 .tipoVIagem {
+    grid-row: 5/6;
+    /* Quarta linha */
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v2.defaultTop-3 .botao-promocao {
+    grid-row: 10;
+    /* Quinta linha */
+    border: none;
+    border-top: 2px solid #0073e6;
+    border-radius: 0px 0px 0px 10px;
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v3.defaultTop-3 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+    grid-row: 3/6;
+    grid-column: 7/13;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v3.defaultTop-3 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    margin: 0px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  #promocoes #v3.defaultTop-3 .destinoLoc {
+    grid-row: 2/3;
+    /* Segunda linha */
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v3.defaultTop-3 .preco {
+    grid-row: 3/5;
+    /* Terceira linha */
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v3.defaultTop-3 .tipoVIagem {
+    grid-row: 5/6;
+    /* Quarta linha */
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v3.defaultTop-3 .botao-promocao {
+    grid-row: 10;
+    /* Quinta linha */
+    border: none;
+    border-top: 2px solid #0073e6;
+    border-radius: 0px 0px 0px 10px;
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v4.defaultTop-3 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+    grid-row: 3/6;
+    grid-column: 7/13;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v4.defaultTop-3 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    margin: 0px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  #promocoes #v4.defaultTop-3 .destinoLoc {
+    grid-row: 2/3;
+    /* Segunda linha */
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v4.defaultTop-3 .preco {
+    grid-row: 3/5;
+    /* Terceira linha */
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v4.defaultTop-3 .tipoVIagem {
+    grid-row: 5/6;
+    /* Quarta linha */
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v4.defaultTop-3 .botao-promocao {
+    grid-row: 10;
+    /* Quinta linha */
+    border: none;
+    border-top: 2px solid #0073e6;
+    border-radius: 0px 0px 0px 10px;
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v5.defaultTop-3 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+    grid-row: 3/6;
+    grid-column: 7/13;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v5.defaultTop-3 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    margin: 0px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  #promocoes #v5.defaultTop-3 .destinoLoc {
+    grid-row: 2/3;
+    /* Segunda linha */
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v5.defaultTop-3 .preco {
+    grid-row: 3/5;
+    /* Terceira linha */
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v5.defaultTop-3 .tipoVIagem {
+    grid-row: 5/6;
+    /* Quarta linha */
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v5.defaultTop-3 .botao-promocao {
+    grid-row: 10;
+    /* Quinta linha */
+    border: none;
+    border-top: 2px solid #0073e6;
+    border-radius: 0px 0px 0px 10px;
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v6.defaultTop-3 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+    grid-row: 3/6;
+    grid-column: 7/13;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v6.defaultTop-3 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    margin: 0px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  #promocoes #v6.defaultTop-3 .destinoLoc {
+    grid-row: 2/3;
+    /* Segunda linha */
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v6.defaultTop-3 .preco {
+    grid-row: 3/5;
+    /* Terceira linha */
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v6.defaultTop-3 .tipoVIagem {
+    grid-row: 5/6;
+    /* Quarta linha */
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v6.defaultTop-3 .botao-promocao {
+    grid-row: 10;
+    /* Quinta linha */
+    border: none;
+    border-top: 2px solid #0073e6;
+    border-radius: 0px 0px 0px 10px;
+    grid-column: 1/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v1 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+  }
+  #promocoes #v1.default-4 {
+    grid-row: 6/7;
+    grid-column: 1/-1;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v1.default-4 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/3;
+    /* Ocupa ambas as colunas */
+  }
+  #promocoes #v1.default-4 .destinoLoc {
+    grid-row: 1/-1;
+    /* Segunda linha */
+    grid-column: 3/5;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v1.default-4 .preco {
+    grid-row: 1/-1;
+    /* Terceira linha */
+    grid-column: 5/7;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v1.default-4 .tipoVIagem {
+    grid-row: 1/-1;
+    /* Quarta linha */
+    grid-column: 7/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v1.default-4 .botao-promocao {
+    grid-row: 1/-1;
+    /* Quinta linha */
+    border: none;
+    border: 2px solid #0073e6;
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: auto;
+  }
+  #promocoes #v1.default-5 {
+    grid-row: 7/8;
+    grid-column: 1/-1;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v1.default-5 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/3;
+    /* Ocupa ambas as colunas */
+  }
+  #promocoes #v1.default-5 .destinoLoc {
+    grid-row: 1/-1;
+    /* Segunda linha */
+    grid-column: 3/5;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v1.default-5 .preco {
+    grid-row: 1/-1;
+    /* Terceira linha */
+    grid-column: 5/7;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v1.default-5 .tipoVIagem {
+    grid-row: 1/-1;
+    /* Quarta linha */
+    grid-column: 7/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v1.default-5 .botao-promocao {
+    grid-row: 1/-1;
+    /* Quinta linha */
+    border: none;
+    border: 2px solid #0073e6;
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: auto;
+  }
+  #promocoes #v1.default-6 {
+    grid-row: 8/9;
+    grid-column: 1/-1;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v1.default-6 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/3;
+    /* Ocupa ambas as colunas */
+  }
+  #promocoes #v1.default-6 .destinoLoc {
+    grid-row: 1/-1;
+    /* Segunda linha */
+    grid-column: 3/5;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v1.default-6 .preco {
+    grid-row: 1/-1;
+    /* Terceira linha */
+    grid-column: 5/7;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v1.default-6 .tipoVIagem {
+    grid-row: 1/-1;
+    /* Quarta linha */
+    grid-column: 7/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v1.default-6 .botao-promocao {
+    grid-row: 1/-1;
+    /* Quinta linha */
+    border: none;
+    border: 2px solid #0073e6;
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: auto;
+  }
+  #promocoes #v2 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+  }
+  #promocoes #v2.default-4 {
+    grid-row: 6/7;
+    grid-column: 1/-1;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v2.default-4 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/3;
+    /* Ocupa ambas as colunas */
+  }
+  #promocoes #v2.default-4 .destinoLoc {
+    grid-row: 1/-1;
+    /* Segunda linha */
+    grid-column: 3/5;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v2.default-4 .preco {
+    grid-row: 1/-1;
+    /* Terceira linha */
+    grid-column: 5/7;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v2.default-4 .tipoVIagem {
+    grid-row: 1/-1;
+    /* Quarta linha */
+    grid-column: 7/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v2.default-4 .botao-promocao {
+    grid-row: 1/-1;
+    /* Quinta linha */
+    border: none;
+    border: 2px solid #0073e6;
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: auto;
+  }
+  #promocoes #v2.default-5 {
+    grid-row: 7/8;
+    grid-column: 1/-1;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v2.default-5 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/3;
+    /* Ocupa ambas as colunas */
+  }
+  #promocoes #v2.default-5 .destinoLoc {
+    grid-row: 1/-1;
+    /* Segunda linha */
+    grid-column: 3/5;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v2.default-5 .preco {
+    grid-row: 1/-1;
+    /* Terceira linha */
+    grid-column: 5/7;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v2.default-5 .tipoVIagem {
+    grid-row: 1/-1;
+    /* Quarta linha */
+    grid-column: 7/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v2.default-5 .botao-promocao {
+    grid-row: 1/-1;
+    /* Quinta linha */
+    border: none;
+    border: 2px solid #0073e6;
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: auto;
+  }
+  #promocoes #v2.default-6 {
+    grid-row: 8/9;
+    grid-column: 1/-1;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v2.default-6 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/3;
+    /* Ocupa ambas as colunas */
+  }
+  #promocoes #v2.default-6 .destinoLoc {
+    grid-row: 1/-1;
+    /* Segunda linha */
+    grid-column: 3/5;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v2.default-6 .preco {
+    grid-row: 1/-1;
+    /* Terceira linha */
+    grid-column: 5/7;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v2.default-6 .tipoVIagem {
+    grid-row: 1/-1;
+    /* Quarta linha */
+    grid-column: 7/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v2.default-6 .botao-promocao {
+    grid-row: 1/-1;
+    /* Quinta linha */
+    border: none;
+    border: 2px solid #0073e6;
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: auto;
+  }
+  #promocoes #v3 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+  }
+  #promocoes #v3.default-4 {
+    grid-row: 6/7;
+    grid-column: 1/-1;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v3.default-4 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/3;
+    /* Ocupa ambas as colunas */
+  }
+  #promocoes #v3.default-4 .destinoLoc {
+    grid-row: 1/-1;
+    /* Segunda linha */
+    grid-column: 3/5;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v3.default-4 .preco {
+    grid-row: 1/-1;
+    /* Terceira linha */
+    grid-column: 5/7;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v3.default-4 .tipoVIagem {
+    grid-row: 1/-1;
+    /* Quarta linha */
+    grid-column: 7/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v3.default-4 .botao-promocao {
+    grid-row: 1/-1;
+    /* Quinta linha */
+    border: none;
+    border: 2px solid #0073e6;
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: auto;
+  }
+  #promocoes #v3.default-5 {
+    grid-row: 7/8;
+    grid-column: 1/-1;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v3.default-5 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/3;
+    /* Ocupa ambas as colunas */
+  }
+  #promocoes #v3.default-5 .destinoLoc {
+    grid-row: 1/-1;
+    /* Segunda linha */
+    grid-column: 3/5;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v3.default-5 .preco {
+    grid-row: 1/-1;
+    /* Terceira linha */
+    grid-column: 5/7;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v3.default-5 .tipoVIagem {
+    grid-row: 1/-1;
+    /* Quarta linha */
+    grid-column: 7/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v3.default-5 .botao-promocao {
+    grid-row: 1/-1;
+    /* Quinta linha */
+    border: none;
+    border: 2px solid #0073e6;
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: auto;
+  }
+  #promocoes #v3.default-6 {
+    grid-row: 8/9;
+    grid-column: 1/-1;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v3.default-6 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/3;
+    /* Ocupa ambas as colunas */
+  }
+  #promocoes #v3.default-6 .destinoLoc {
+    grid-row: 1/-1;
+    /* Segunda linha */
+    grid-column: 3/5;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v3.default-6 .preco {
+    grid-row: 1/-1;
+    /* Terceira linha */
+    grid-column: 5/7;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v3.default-6 .tipoVIagem {
+    grid-row: 1/-1;
+    /* Quarta linha */
+    grid-column: 7/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v3.default-6 .botao-promocao {
+    grid-row: 1/-1;
+    /* Quinta linha */
+    border: none;
+    border: 2px solid #0073e6;
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: auto;
+  }
+  #promocoes #v4 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+  }
+  #promocoes #v4.default-4 {
+    grid-row: 6/7;
+    grid-column: 1/-1;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v4.default-4 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/3;
+    /* Ocupa ambas as colunas */
+  }
+  #promocoes #v4.default-4 .destinoLoc {
+    grid-row: 1/-1;
+    /* Segunda linha */
+    grid-column: 3/5;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v4.default-4 .preco {
+    grid-row: 1/-1;
+    /* Terceira linha */
+    grid-column: 5/7;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v4.default-4 .tipoVIagem {
+    grid-row: 1/-1;
+    /* Quarta linha */
+    grid-column: 7/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v4.default-4 .botao-promocao {
+    grid-row: 1/-1;
+    /* Quinta linha */
+    border: none;
+    border: 2px solid #0073e6;
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: auto;
+  }
+  #promocoes #v4.default-5 {
+    grid-row: 7/8;
+    grid-column: 1/-1;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v4.default-5 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/3;
+    /* Ocupa ambas as colunas */
+  }
+  #promocoes #v4.default-5 .destinoLoc {
+    grid-row: 1/-1;
+    /* Segunda linha */
+    grid-column: 3/5;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v4.default-5 .preco {
+    grid-row: 1/-1;
+    /* Terceira linha */
+    grid-column: 5/7;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v4.default-5 .tipoVIagem {
+    grid-row: 1/-1;
+    /* Quarta linha */
+    grid-column: 7/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v4.default-5 .botao-promocao {
+    grid-row: 1/-1;
+    /* Quinta linha */
+    border: none;
+    border: 2px solid #0073e6;
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: auto;
+  }
+  #promocoes #v4.default-6 {
+    grid-row: 8/9;
+    grid-column: 1/-1;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v4.default-6 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/3;
+    /* Ocupa ambas as colunas */
+  }
+  #promocoes #v4.default-6 .destinoLoc {
+    grid-row: 1/-1;
+    /* Segunda linha */
+    grid-column: 3/5;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v4.default-6 .preco {
+    grid-row: 1/-1;
+    /* Terceira linha */
+    grid-column: 5/7;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v4.default-6 .tipoVIagem {
+    grid-row: 1/-1;
+    /* Quarta linha */
+    grid-column: 7/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v4.default-6 .botao-promocao {
+    grid-row: 1/-1;
+    /* Quinta linha */
+    border: none;
+    border: 2px solid #0073e6;
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: auto;
+  }
+  #promocoes #v5 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+  }
+  #promocoes #v5.default-4 {
+    grid-row: 6/7;
+    grid-column: 1/-1;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v5.default-4 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/3;
+    /* Ocupa ambas as colunas */
+  }
+  #promocoes #v5.default-4 .destinoLoc {
+    grid-row: 1/-1;
+    /* Segunda linha */
+    grid-column: 3/5;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v5.default-4 .preco {
+    grid-row: 1/-1;
+    /* Terceira linha */
+    grid-column: 5/7;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v5.default-4 .tipoVIagem {
+    grid-row: 1/-1;
+    /* Quarta linha */
+    grid-column: 7/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v5.default-4 .botao-promocao {
+    grid-row: 1/-1;
+    /* Quinta linha */
+    border: none;
+    border: 2px solid #0073e6;
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: auto;
+  }
+  #promocoes #v5.default-5 {
+    grid-row: 7/8;
+    grid-column: 1/-1;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v5.default-5 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/3;
+    /* Ocupa ambas as colunas */
+  }
+  #promocoes #v5.default-5 .destinoLoc {
+    grid-row: 1/-1;
+    /* Segunda linha */
+    grid-column: 3/5;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v5.default-5 .preco {
+    grid-row: 1/-1;
+    /* Terceira linha */
+    grid-column: 5/7;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v5.default-5 .tipoVIagem {
+    grid-row: 1/-1;
+    /* Quarta linha */
+    grid-column: 7/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v5.default-5 .botao-promocao {
+    grid-row: 1/-1;
+    /* Quinta linha */
+    border: none;
+    border: 2px solid #0073e6;
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: auto;
+  }
+  #promocoes #v5.default-6 {
+    grid-row: 8/9;
+    grid-column: 1/-1;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v5.default-6 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/3;
+    /* Ocupa ambas as colunas */
+  }
+  #promocoes #v5.default-6 .destinoLoc {
+    grid-row: 1/-1;
+    /* Segunda linha */
+    grid-column: 3/5;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v5.default-6 .preco {
+    grid-row: 1/-1;
+    /* Terceira linha */
+    grid-column: 5/7;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v5.default-6 .tipoVIagem {
+    grid-row: 1/-1;
+    /* Quarta linha */
+    grid-column: 7/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v5.default-6 .botao-promocao {
+    grid-row: 1/-1;
+    /* Quinta linha */
+    border: none;
+    border: 2px solid #0073e6;
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: auto;
+  }
+  #promocoes #v6 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Duas colunas para estrutura vertical */
+    grid-template-rows: repeat(10, minmax(0%, 10%));
+    /* Linhas ajustáveis verticalmente */
+  }
+  #promocoes #v6.default-4 {
+    grid-row: 6/7;
+    grid-column: 1/-1;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v6.default-4 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/3;
+    /* Ocupa ambas as colunas */
+  }
+  #promocoes #v6.default-4 .destinoLoc {
+    grid-row: 1/-1;
+    /* Segunda linha */
+    grid-column: 3/5;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v6.default-4 .preco {
+    grid-row: 1/-1;
+    /* Terceira linha */
+    grid-column: 5/7;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v6.default-4 .tipoVIagem {
+    grid-row: 1/-1;
+    /* Quarta linha */
+    grid-column: 7/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v6.default-4 .botao-promocao {
+    grid-row: 1/-1;
+    /* Quinta linha */
+    border: none;
+    border: 2px solid #0073e6;
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: auto;
+  }
+  #promocoes #v6.default-5 {
+    grid-row: 7/8;
+    grid-column: 1/-1;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v6.default-5 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/3;
+    /* Ocupa ambas as colunas */
+  }
+  #promocoes #v6.default-5 .destinoLoc {
+    grid-row: 1/-1;
+    /* Segunda linha */
+    grid-column: 3/5;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v6.default-5 .preco {
+    grid-row: 1/-1;
+    /* Terceira linha */
+    grid-column: 5/7;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v6.default-5 .tipoVIagem {
+    grid-row: 1/-1;
+    /* Quarta linha */
+    grid-column: 7/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v6.default-5 .botao-promocao {
+    grid-row: 1/-1;
+    /* Quinta linha */
+    border: none;
+    border: 2px solid #0073e6;
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: auto;
+  }
+  #promocoes #v6.default-6 {
+    grid-row: 8/9;
+    grid-column: 1/-1;
+    z-index: 1;
+    text-align: center;
+    justify-content: center;
+  }
+  #promocoes #v6.default-6 .Aimg {
+    grid-row: 1/-1;
+    /* Primeira linha */
+    grid-column: 1/3;
+    /* Ocupa ambas as colunas */
+  }
+  #promocoes #v6.default-6 .destinoLoc {
+    grid-row: 1/-1;
+    /* Segunda linha */
+    grid-column: 3/5;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  #promocoes #v6.default-6 .preco {
+    grid-row: 1/-1;
+    /* Terceira linha */
+    grid-column: 5/7;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v6.default-6 .tipoVIagem {
+    grid-row: 1/-1;
+    /* Quarta linha */
+    grid-column: 7/9;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  #promocoes #v6.default-6 .botao-promocao {
+    grid-row: 1/-1;
+    /* Quinta linha */
+    border: none;
+    border: 2px solid #0073e6;
+    grid-column: 9/13;
+    /* Ocupa ambas as colunas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    height: auto;
+  }
+  #ideia1 {
+    grid-row: 2/13; /* Ocupa a primeira metade (100% da altura) */
+    grid-column: 1/7; /* Um quarto da coluna */
+    z-index: 1;
+  }
+  #ideia2 {
+    grid-row: 2/7; /* Ocupa a primeira metade (100% da altura) */
+    grid-column: 7/13; /* Um quarto da coluna */
+    z-index: 1;
+    background-color: pink;
+  }
+  #ideia3 {
+    grid-row: 7/10; /* Ocupa a segunda metade (100% da altura) */
+    grid-column: 7/13; /* Um quarto da coluna */
+    z-index: 1;
+    background-color: #00ff00;
+  }
+  #ideia4 {
+    grid-row: 10/13; /* Ocupa a segunda metade (50% da altura) */
+    grid-column: 7/13; /* Segunda metade das colunas */
+    background-color: #0073e6;
+    z-index: 1;
+  }
+}
+.btn-SeccaoVoos {
+  text-decoration: none;
+  color: #000000;
+  font-size: 1.1rem;
+  font-weight: 200;
+  padding: 10px;
+  flex-grow: 1;
+  top: 1px;
+  /* Ajuste fino para sobreposição */
+}
+
+.btn-SeccaoVoos:hover {
+  color: rgb(102, 102, 102);
+}
+
+.btn-SeccaoVoos.clicado {
+  border-bottom: 2px solid rgb(0, 119, 205);
+  color: rgb(102, 102, 102);
+}
+
+#seccaoVoosButtonsDiv {
+  padding: 10px 0px;
+  font-size: 16px;
+  color: #333;
+  background-color: white;
+  border-bottom: 2px solid lightgray;
+  /* Borda padrão */
+  position: relative;
+  top: 2px;
+  /* Alinha com hover */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-toggler {
+    display: flex;
+    /* Additional styles if needed */
+  }
+  #barra2 {
+    display: none;
+  }
+  #barra1 .texto {
+    display: none;
+  }
+  .placar {
+    overflow: visible;
+    grid-row: 4/8;
+    grid-column: 2/11;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background: rgb(7, 43, 69);
+    /* Fundo translúcido */
+    opacity: 0.8;
+    color: white;
+    border-radius: 5px;
+    /* Bordas arredondadas */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Sombra */
+    z-index: -1;
+  }
+  /*Destinos e ofertas*/
+  .destino-promocao {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  .pais-promocao {
+    font-size: 0.7rem;
+    color: #666;
+  }
+  .preco-promocao {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: black;
+    margin: 5px 0;
+  }
+  .info-promocao {
+    font-size: 0.7rem;
+    color: #444;
+  }
+  .search .loginLi .nav-link,
+  .search .linguas .linguas {
+    display: none;
+  }
+  .nav-link:hover {
+    width: 90vw;
+  }
+  /*artigos*/
+  #art1 {
+    grid-row: 2/5;
+    /* Ocupa a primeira metade (50% da altura) */
+    grid-column: 1/-1;
+    /* Primeira metade das colunas */
+    z-index: 1;
+  }
+  #art2 {
+    grid-row: 5/8;
+    /* Ocupa a primeira metade (50% da altura) */
+    grid-column: 1/-1;
+    /* Segunda metade das colunas */
+    z-index: 1;
+  }
+  #art3 {
+    grid-row: 8/11;
+    /* Ocupa a segunda metade (50% da altura) */
+    grid-column: 1/-1;
+    /* Primeira metade das colunas */
+    z-index: 1;
+  }
+  #art4 {
+    grid-row: 11/13;
+    /* Ocupa a segunda metade (50% da altura) */
+    grid-column: 1/-1;
+    /* Segunda metade das colunas */
+    z-index: 1;
+  }
+  .Aimg {
+    z-index: 3;
+    background-size: cover;
+    /* Ajusta a imagem para cobrir todo o contêiner */
+    background-position: center;
+    /* Centraliza a imagem */
+    background-repeat: no-repeat;
+    /* Impede repetição da imagem */
+    overflow: hidden;
+  }
+  .artText {
+    z-index: 2;
+    background-color: #ffffff;
+    /* Cor de fundo suave */
+    padding: 5px;
+    margin-left: 10px;
+    /* Margem à esquerda */
+    margin-right: 10px;
+    /* Margem à direita */
+    text-align: left;
+    /* Centraliza o texto */
+  }
+  #artText-1 {
+    grid-row: 1/-1;
+    grid-column: 1/6;
+  }
+  #artImg1 {
+    grid-row: 1/-1;
+    grid-column: 6/13;
+  }
+  #artText-2 {
+    grid-row: 1/-1;
+    grid-column: 7/13;
+  }
+  #artImg2 {
+    grid-row: 1/-1;
+    grid-column: 1/7;
+  }
+  #artText-3 {
+    grid-row: 1/-1;
+    grid-column: 1/6;
+  }
+  #artImg3 {
+    grid-row: 1/-1;
+    grid-column: 6/13;
+  }
+  #artText-4 {
+    grid-row: 1/-1;
+    grid-column: 7/13;
+  }
+  #artImg4 {
+    grid-row: 1/-1;
+    grid-column: 1/7;
+  }
+  #artText-5 {
+    grid-row: 1/-1;
+    grid-column: 1/6;
+  }
+  #artImg5 {
+    grid-row: 1/-1;
+    grid-column: 6/13;
+  }
+  .artText h4 {
+    font-size: 1rem;
+    /* Tamanho da fonte do título */
+    color: #333;
+    /* Cor do texto */
+    margin-bottom: 5px;
+    /* Reduz o espaço abaixo do título */
+  }
+  .artText p {
+    font-size: 0.7rem;
+    /* Tamanho da fonte do parágrafo */
+    color: #555;
+    /* Cor do texto */
+    margin-top: 0;
+    /* Remove a margem superior do parágrafo */
+  }
+  /*Versão do v mais para dispositivos menores*/
+  #verMais {
+    grid-row: 14;
+    grid-column: 1/-1;
+    width: 100%;
+    font-size: 1em;
+    color: rgb(21, 92, 145);
+    font-weight: bold;
+  }
+  /*Destinos e ofertas css*/
+  .detalhes-promocao {
+    flex: 2;
+  }
+  .destino-promocao {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  .pais-promocao {
+    font-size: 0.7rem;
+    color: #666;
+  }
+  .preco-promocao {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: black;
+    margin: 5px 0;
+  }
+  .info-promocao {
+    font-size: 0.7rem;
+    color: #444;
+  }
+  .botao-promocao {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: transparent;
+    border: 2px solid #0073e6;
+    /* Borda azul de 2px */
+    color: #000;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex-wrap: wrap;
+  }
+  .botao-promocao:hover {
+    background-color: rgba(0, 91, 181, 0.5);
+  }
+  #aeroporto {
+    border: none;
+    border-bottom: 2px solid #000;
+    /* Borda preta de 2px por baixo do select */
+    border-radius: 0;
+    padding: 0;
+    /* Remover qualquer espaçamento interno */
+    margin: 0;
+    /* Remover margens externas, se houver */
+    width: auto;
+    max-width: 70%;
+    height: 25px;
+    flex: 1;
+    text-align: center;
+    margin-bottom: 5%;
+  }
+  #ideia1 {
+    grid-row: 2/5; /* Ocupa a segunda metade (50% da altura) */
+    grid-column: 1/-1; /* Segunda metade das colunas */
+    z-index: 1;
+  }
+  #ideia2 {
+    grid-row: 5/8; /* Ocupa a segunda metade (50% da altura) */
+    grid-column: 1/-1; /* Segunda metade das colunas */
+    z-index: 1;
+  }
+  #ideia3 {
+    grid-row: 8/11; /* Ocupa a segunda metade (50% da altura) */
+    grid-column: 1/-1; /* Segunda metade das colunas */
+    z-index: 1;
+  }
+  #ideia4 {
+    grid-row: 11/14; /* Ocupa a segunda metade (50% da altura) */
+    grid-column: 1/-1; /* Segunda metade das colunas */
+    z-index: 1;
+  }
+  #container7 {
+    display: grid; /* ao usar substituir para "display grid"*/
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(14, 1fr);
+  }
+  #container7 .discover-more {
+    grid-column: 1/-1;
+    grid-row: 14;
+    z-index: 9;
+  }
+  /* Estilo geral para os links legais */
+  .legal-links {
+    text-align: center;
+    /* Centraliza o conteúdo */
+    font-size: 0.6rem;
+    /* Tamanho do texto ajustado */
+    color: #666;
+    /* Cor do texto */
+    margin-top: 20px;
+  }
+  /* Estilo da lista */
+  .legal-links ul {
+    list-style-type: none;
+    /* Remove bullets */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    /* Exibe os itens na mesma linha */
+    gap: 5px;
+    /* Espaçamento entre os itens */
+  }
+  .legal-links ul li {
+    display: inline;
+    /* Garante que os itens fiquem na mesma linha */
+    margin: 0;
+    padding: 0;
+  }
+  /* Adiciona o separador "|" entre os itens */
+  .legal-links ul li:not(:last-child)::after {
+    content: " | ";
+    /* Adiciona o separador */
+    color: #666;
+    /* Cor do separador */
+  }
+  /* Adiciona o separador "|" entre os itens */
+  .legal-links ul li:last-child::after {
+    content: " ";
+    /* Adiciona o separador */
+    color: #666;
+    /* Cor do separador */
+  }
+  /* Estilo dos links */
+  .legal-links a {
+    text-decoration: none;
+    /* Remove sublinhado */
+    color: #666;
+    /* Cor padrão dos links */
+    transition: color 0.3s ease;
+    font-size: 0.8em;
+    white-space: nowrap;
+  }
+  /* Estilo do texto simples */
+  .legal-links ul li {
+    color: #666;
+    /* Cor do texto padrão */
+    font-size: 0.9rem;
+  }
+}/*# sourceMappingURL=styles.css.map */
